@@ -8,7 +8,7 @@ const Nav = () => {
                     <div className="flex items-center max-h-10 w-full">
                         <div className="flex ml-4">
                             <img className="App-logo h-12 w-12" src={logo} alt="logo"></img>
-                        </div>
+                        </div> 
                         <div className=" ">
                             <div className="ml-10 flex items-baseline space-x-4">
                                 {/* <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a> */}

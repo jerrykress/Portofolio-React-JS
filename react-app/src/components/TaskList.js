@@ -8,10 +8,12 @@ const Task = (props) => {
    
 
     return (
-        <div className="taskList">
-            {props.tasks.map((task) => (
-                <TaskItem key={task.id} onDelete={deleteTask} item={task} />
-            ))}
+        <div className="grid grid-cols-4 gap-4 m-10 lg:grid-cols-5">
+            {props.tasks.length > 0
+                ? (props.tasks.map((task) => (
+                <TaskItem key={task.id} onDelete={deleteTask} item={task} />))) 
+                : 'No Task to Show'
+            }
         </div>
     )
 }
