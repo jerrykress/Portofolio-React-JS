@@ -8,7 +8,7 @@ const Task = (props) => {
    
 
     return (
-        <div className='taskList'>
+        <div className="taskList">
             {props.tasks.map((task) => (
                 <TaskItem key={task.id} onDelete={deleteTask} item={task} />
             ))}

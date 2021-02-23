@@ -9,9 +9,7 @@ const Header = (props) => {
     }
 
     return (
-        <header>
-            <h1>React Todo</h1>
-            <p>{props.title}</p>
+        <header className="flex flex-col items-center">
             <Button text='Add Task' onClick={buttonClick} />
         </header>
     )
