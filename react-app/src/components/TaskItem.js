@@ -9,10 +9,10 @@ const TaskItem = (props) => {
                 <p className="text-xs italic text-gray-600 mt-2">{props.item.day}</p>
             </div>
 
-            <div className="mt-3 align-baseline">
+            <div className="mt-3 align-baseline -mb-2">
                 <TaskDeleteButton onClick={props.onDelete} text="Delete" item={props.item}/>
             </div>
-            <div className="mt-3 align-baseline ml-3">
+            <div className="mt-3 align-baseline -mb-2">
                 <TaskRemindButton onClick={props.onToggle} text="Remind" item={props.item}/>
             </div>
         </div>
