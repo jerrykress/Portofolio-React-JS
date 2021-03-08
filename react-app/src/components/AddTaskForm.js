@@ -2,14 +2,7 @@ import React from 'react'
 import AddTaskButton from './task_components/AddTaskButton'
 import { useState } from 'react'
 
-import DateFnsUtils from '@date-io/date-fns'; // choose your lib
-import {
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
-
 const AddTaskForm = (props) => {
-    const [selectedDate, handleDateChange] = useState(new Date());
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     // const [reminder, setReminder] = useState(false)
@@ -38,27 +31,15 @@ const AddTaskForm = (props) => {
 
     return (
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2">
-            
-
             <div className="tracking-wide px-3 mb-6 md:mb-0 ml-2 mr-2 grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
-
                 <div className="form-control">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3"> text </label>
                     <input className="appearance-none w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={text} onChange={(e) => setText(e.target.value)} />
                 </div>
-
                 <div className="form-control">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3"> Time </label>
-                    <div className="relative w-full">
-                        <div class="absolute right-0 w-full h-full pb-3">
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DateTimePicker className="opacity-0 bg-red-500 w-full h-full z-50" value={selectedDate} onChange={handleDateChange} />
-                            </MuiPickersUtilsProvider>
-                        </div>
-                        <input className="appearance-none  w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={day} onChange={(e) => setDay(e.target.value)} placeholder={selectedDate}/>
-                    </div>
+                    <input className="appearance-none  w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={day} onChange={(e) => setDay(e.target.value)} />
                 </div>
-
                 <div className="form-control">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>
                     <AddTaskButton className="form-control" text='Add Task' onClick={addTask}/>
