@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Header from './components/Header'
+import AddTaskForm from './components/AddTaskForm'
 import TaskList from './components/TaskList'
 import Nav from './components/Nav'
 
@@ -47,7 +48,8 @@ function App() {
     <div>
       <header>
         <Nav />
-        <Header/>
+        {/* <Header/> */}
+        <AddTaskForm globalTasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
       </header>
     </div>
