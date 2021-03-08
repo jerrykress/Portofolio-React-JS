@@ -48,7 +48,7 @@ function App() {
     <div>
       <header>
         <Nav />
-        {/* <Header/> */}
+        <Header/>
         <AddTaskForm globalTasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
       </header>
