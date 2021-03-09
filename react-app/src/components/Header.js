@@ -8,7 +8,7 @@ const Header = (props) => {
     }
 
     return (
-        <header className="flex flex-col items-center">
+        <header className="flex flex-col mx-10 mt-5 -mb-5">
             <Button text='Add Task' onClick={buttonClick} />
         </header>
     )
