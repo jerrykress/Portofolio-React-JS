@@ -8,6 +8,7 @@ const AddTaskForm = (props) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     // const [reminder, setReminder] = useState(false)
+    const [priority, setPriority] = useState(0)
 
     const addTask = (e) => {
         e.preventDefault()
@@ -24,7 +25,7 @@ const AddTaskForm = (props) => {
         // submit
         const id = Math.floor(Math.random() * 10000) + 1
         const reminder = false
-        const task = {id, text, day, reminder}
+        const task = {id, text, day, reminder, priority}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')
@@ -44,7 +45,7 @@ const AddTaskForm = (props) => {
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>
-                    <PriorityButton className="form-control" text='Add Task' onClick={addTask}/>
+                    <PriorityButton className="form-control" text='Add Task' onClick={addTask} level={priority} setLevel={setPriority} />
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Tag </label>

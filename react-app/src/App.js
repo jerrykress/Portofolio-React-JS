@@ -15,30 +15,35 @@ function App() {
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
+          priority: 0
       },
       {
           id: 2,
           text: 'Go to the shop',
           day: 'Feb 6th at 4:30pm',
           reminder: false,
+          priority: 1
       },
       {
           id: 3,
           text: 'A very long session with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
+          priority: 0
       },
       {
           id: 4,
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
+          priority: 0
       },
       {
           id: 5,
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
+          priority: 2
       },
   ])
 

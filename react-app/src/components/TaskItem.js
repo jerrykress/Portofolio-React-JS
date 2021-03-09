@@ -2,9 +2,15 @@ import TaskDeleteButton from './task_components/TaskDeleteButton'
 import TaskRemindButton from './task_components/TaskRemindButton'
 
 const TaskItem = (props) => {
+    const levels = ["LOW", "MED", "HIGH"]
+    const levelColors = ["green", "yellow", "red"]
+    
     return (
         <div className={`font-sans flex flex-wrap content-between h-auto m-4 bg-white border-2 border-gray-300 hover:${props.item.reminder ? "border-green-500" : "border-gray-500"} transition-colors duration-1000 p-6 rounded-md tracking-wide shadow-lg` + (props.item.reminder && " border-3 border-green-500")} onDoubleClick={()=>props.onToggle(props.item.id)} >
             <div className="w-full">
+                <span class={`inline-flex items-center justify-center px-2 py-1 mr-2 mb-2 -ml-0 text-xxs leading-none text-${levelColors[props.item.priority]}-100 bg-${levelColors[props.item.priority]}-600 rounded-full`}>
+                    {/* {levels[props.item.priority]} */}
+                    </span>
                 <h3 className="text-l font-semibold subpixel-antialiased" key={props.item.id}>{props.item.text}</h3>
                 <p className="text-xs italic text-gray-600 mt-2">{props.item.day}</p>
             </div>
