@@ -17,7 +17,7 @@ const Task = (props) => {
             <div className="flex mt-12 mx-12 justify-between">
                 <p className="text-gray-700 text-3xl">All Tasks</p>
                 <div className="mr-2">
-                    <SortDropDown/>
+                    <SortDropDown tasks={props.tasks}/>
                 </div>
             </div>
             <div className="grid gap-4 m-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
