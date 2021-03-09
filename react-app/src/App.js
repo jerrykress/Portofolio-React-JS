@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import './index.css';
-
-import logo from './logo.svg';
 import './App.css';
 
 import Header from './components/Header'
