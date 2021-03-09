@@ -6,6 +6,7 @@ import Header from './components/Header'
 import AddTaskForm from './components/AddTaskForm'
 import TaskList from './components/TaskList'
 import Nav from './components/Nav'
+import TodayView from './components/TodayView'
 
 function App() {
   // global state
@@ -53,6 +54,7 @@ function App() {
         <Nav />
         <Header/>
         <AddTaskForm globalTasks={tasks} setTasks={setTasks} />
+        <TodayView tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
       </header>
     </div>
