@@ -1,3 +1,9 @@
+/*
+
+a list of all the tasks that are currently active (not completed)
+
+*/ 
+
 import TaskItem from './TaskItem'
 import SortDropDown from './SortTaskButton'
 
@@ -12,6 +18,11 @@ const Task = (props) => {
         props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, reminder: !task.reminder} : task))
     }
 
+    const toggleCompleted = (id) => {
+        console.log('toggle complete', id)
+        props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, completed: !task.completed} : task))
+    }
+
     return (
         <div>
             <div className="flex mt-12 mx-12 justify-between">
@@ -22,9 +33,9 @@ const Task = (props) => {
             </div>
             <div className="grid gap-4 m-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
                 {props.tasks.length > 0
-                    ? (props.tasks.map((task) => (
-                    <TaskItem key={task.id} onDelete={deleteTask} onToggle={toggleTask} item={task} />))) 
-                    : 'No Task to Show'
+                    ? (props.tasks.filter((task) => task.completed === false).map((task) => (
+                   <TaskItem key={task.id} onDelete={deleteTask} onToggle={toggleTask} onComplete={toggleCompleted} item={task} />)))  
+                    : 'Add a task to begin!'
                 }
             </div>
         </div>

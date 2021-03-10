@@ -25,7 +25,8 @@ const AddTaskForm = (props) => {
         // submit
         const id = Math.floor(Math.random() * 10000) + 1
         const reminder = false
-        const task = {id, text, day, reminder, priority}
+        const completed = false
+        const task = {id, text, day, reminder, priority, completed}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')

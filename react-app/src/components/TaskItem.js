@@ -1,5 +1,6 @@
 import TaskDeleteButton from './task_components/TaskDeleteButton'
 import TaskRemindButton from './task_components/TaskRemindButton'
+import TaskCheckButton from './task_components/TaskCheckButton'
 
 const TaskItem = (props) => {
     const levels = ["LOW", "MED", "HIGH"]
@@ -20,6 +21,9 @@ const TaskItem = (props) => {
             </div>
             <div className="mt-3 align-baseline -mb-2">
                 <TaskRemindButton onClick={props.onToggle} text="Remind" item={props.item}/>
+            </div>
+            <div className="mt-3 align-baseline -mb-2">
+                <TaskCheckButton onClick={props.onComplete} text="Complete" item={props.item}/>
             </div>
         </div>
     )

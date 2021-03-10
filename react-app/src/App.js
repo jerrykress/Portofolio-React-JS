@@ -7,6 +7,7 @@ import AddTaskForm from './components/AddTaskForm'
 import TaskList from './components/TaskList'
 import Nav from './components/Nav'
 import TodayView from './components/TodayView'
+import CompletedView from './components/CompletedTasksView'
 
 function App() {
   // global state
@@ -16,35 +17,40 @@ function App() {
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
-          priority: 0
+          priority: 0,
+          completed: false
       },
       {
           id: 2,
           text: 'Go to the shop',
           day: 'Feb 6th at 4:30pm',
           reminder: false,
-          priority: 1
+          priority: 1,
+          completed: false
       },
       {
           id: 3,
           text: 'A very long session with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
-          priority: 0
+          priority: 0,
+          completed: false
       },
       {
           id: 4,
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
-          priority: 0
+          priority: 0,
+          completed: false
       },
       {
           id: 5,
           text: 'Meeting with team',
           day: 'Feb 5th at 2:30pm',
           reminder: false,
-          priority: 2
+          priority: 2,
+          completed: false
       },
   ])
 
@@ -56,6 +62,7 @@ function App() {
         <AddTaskForm globalTasks={tasks} setTasks={setTasks} />
         <TodayView tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
+        <CompletedView tasks={tasks} setTasks={setTasks}/> 
       </header>
     </div>
   );
