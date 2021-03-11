@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import moment from 'moment'
 
 import AddTaskButton from './task_components/AddTaskButton'
 import PriorityButton from './task_components/TaskPriorityButton'
@@ -8,6 +9,7 @@ import ParseField from './DateParseInputField'
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('Date')
+    const [momentArr, setMomentArr] = useState(moment())
     // const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
 
@@ -27,7 +29,7 @@ const AddTaskForm = (props) => {
         const id = Math.floor(Math.random() * 10000) + 1
         const reminder = false
         const completed = false
-        const task = {id, text, day, reminder, priority, completed}
+        const task = {id, text, momentArr, reminder, priority, completed}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')
@@ -42,8 +44,8 @@ const AddTaskForm = (props) => {
                     <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={text} onChange={(e) => setText(e.target.value)} />
                 </div>
                 <div className="form-control col-span-3">
-                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {day} </label>
-                    <ParseField setDisplayed={setDay}/>
+                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {day === "" ? "Date" : day} </label>
+                    <ParseField setDisplayed={setDay} setMomentArr={setMomentArr} />
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>

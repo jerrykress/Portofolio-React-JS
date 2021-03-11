@@ -1,4 +1,6 @@
 import React from 'react'
+import moment from 'moment'
+
 import RestoreButton from './task_components/TaskRestoreButton'
 
 const CompletedItem = (props) => {
@@ -8,7 +10,7 @@ const CompletedItem = (props) => {
             <div className="w-full">
 
                 <h3 className="text-l font-semibold subpixel-antialiased text-gray-400" key={props.item.id}>{props.item.text}</h3>
-                <p className="text-xs italic text-gray-400 mt-2">{props.item.day}</p>
+                <p className="text-xs italic text-gray-400 mt-2">{moment(props.item.day).format('llll')}</p>
             </div>
 
             <div className="mt-3 align-baseline -mb-2">

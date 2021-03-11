@@ -15,7 +15,7 @@ function App() {
       {
           id: 1,
           text: 'Meeting with team',
-          day: 'Feb 5th at 2:30pm',
+          day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 0,
           completed: false
@@ -23,7 +23,7 @@ function App() {
       {
           id: 2,
           text: 'Go to the shop',
-          day: 'Feb 6th at 4:30pm',
+          day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 1,
           completed: false
@@ -31,7 +31,7 @@ function App() {
       {
           id: 3,
           text: 'A very long session with team',
-          day: 'Feb 5th at 2:30pm',
+          day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 0,
           completed: false
@@ -39,7 +39,7 @@ function App() {
       {
           id: 4,
           text: 'Meeting with team',
-          day: 'Feb 5th at 2:30pm',
+          day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 0,
           completed: false
@@ -47,7 +47,7 @@ function App() {
       {
           id: 5,
           text: 'Meeting with team',
-          day: 'Feb 5th at 2:30pm',
+          day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 2,
           completed: false

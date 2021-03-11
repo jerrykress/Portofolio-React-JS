@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 const DateParseInputField = (props) => {
     // get current date and time
-    const [displayContent, setDisplayContent] = useState(moment())
     const [textInput, setTextInput] = useState('')
 
     const parseHandler = (textValue) => {
@@ -24,6 +23,7 @@ const DateParseInputField = (props) => {
             + ' ' + parsedMoment.hour()
             + ':' + parsedMoment.minute().toString().padStart(2,0))
         props.setDisplayed(formattedMoment)
+        props.setMomentArr(getMomentArr(parsedMoment))
     }
     
     return (
@@ -31,6 +31,10 @@ const DateParseInputField = (props) => {
             <input className="appearance-none  w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={textInput} onChange={(e) => parseHandler(e.target.value)} placeholder={formatMoment(moment())}/>
         </div>
     )
+}
+
+const getMomentArr = (m) => {
+    return [m.year(), m.month(), m.date(), m.hour(), m.minute()]
 }
 
 const formatMoment = (m) => {

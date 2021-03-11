@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 import TaskDeleteButton from './task_components/TaskDeleteButton'
 import TaskRemindButton from './task_components/TaskRemindButton'
 import TaskCheckButton from './task_components/TaskCheckButton'
@@ -13,7 +15,7 @@ const TaskItem = (props) => {
                     {/* {levels[props.item.priority]} */}
                     </span>
                 <h3 className="text-l font-semibold subpixel-antialiased" key={props.item.id}>{props.item.text}</h3>
-                <p className="text-xs italic text-gray-600 mt-2">{props.item.day}</p>
+                <p className="text-xs italic text-gray-600 mt-2">{moment(props.item.day).format('llll')}</p>
             </div>
 
             <div className="mt-3 align-baseline -mb-2">
