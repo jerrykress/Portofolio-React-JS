@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import AddTaskButton from './task_components/AddTaskButton'
 import PriorityButton from './task_components/TaskPriorityButton'
+import ParseField from './DateParseInputField'
 
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
@@ -41,8 +42,8 @@ const AddTaskForm = (props) => {
                     <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={text} onChange={(e) => setText(e.target.value)} />
                 </div>
                 <div className="form-control col-span-3">
-                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> Date </label>
-                    <input className="appearance-none  w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={day} onChange={(e) => setDay(e.target.value)} />
+                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {day} </label>
+                    <ParseField setDisplayed={setDay}/>
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>

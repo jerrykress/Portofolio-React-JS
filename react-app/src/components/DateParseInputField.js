@@ -2,21 +2,28 @@ import React from 'react'
 import moment from 'moment'
 import { useState } from 'react'
 
-const DateParseInputField = () => {
+const DateParseInputField = (props) => {
     // get current date and time
     const [displayContent, setDisplayContent] = useState(moment())
     const [textInput, setTextInput] = useState('')
 
     const parseHandler = (textValue) => {
-        console.log("Attempting to parse date time input")
         // update the textbox state
         setTextInput(textValue)
         const parsedMoment = getParsedMoment(textValue)
-        console.log(String(parsedMoment.year())
+        console.log("Parsed raw value: "
+            + ' ' + String(parsedMoment.year())
             + ' ' + String(parsedMoment.month())
             + ' ' + String(parsedMoment.date())
             + ' ' + String(parsedMoment.hour())
             + ' ' + String(parsedMoment.minute()))
+        const formattedMoment = ("Date: "
+            + ' ' + parsedMoment.year()
+            + ' ' + months[parsedMoment.month()]
+            + ' ' + parsedMoment.date()
+            + ' ' + parsedMoment.hour()
+            + ':' + parsedMoment.minute().toString().padStart(2,0))
+        props.setDisplayed(formattedMoment)
     }
     
     return (

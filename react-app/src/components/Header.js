@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
-import ParseField from './DateParseInputField'
 
 const Header = (props) => {
 
@@ -11,7 +10,6 @@ const Header = (props) => {
     return (
         <header className="flex flex-col mx-10 mt-5 -mb-5">
             <Button text='Add Task' onClick={buttonClick} />
-            <ParseField />
         </header>
     )
 }
