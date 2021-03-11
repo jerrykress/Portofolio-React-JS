@@ -7,7 +7,7 @@ import ParseField from './DateParseInputField'
 
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
-    const [day, setDay] = useState('')
+    const [day, setDay] = useState('Date')
     // const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
 

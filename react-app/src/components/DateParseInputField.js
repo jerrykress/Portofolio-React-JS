@@ -28,9 +28,19 @@ const DateParseInputField = (props) => {
     
     return (
         <div>
-            <input className="appearance-none  w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={textInput} onChange={(e) => parseHandler(e.target.value)} />
+            <input className="appearance-none  w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={textInput} onChange={(e) => parseHandler(e.target.value)} placeholder={formatMoment(moment())}/>
         </div>
     )
+}
+
+const formatMoment = (m) => {
+    const formatted = (""
+            + ' ' + m.year()
+            + ' ' + months[m.month()]
+            + ' ' + m.date()
+            + ' ' + m.hour()
+            + ':' + m.minute().toString().padStart(2,0))
+    return formatted
 }
 
 // find the common element within 2 arrs, returns the index of the matching element in the 2nd array
@@ -67,15 +77,27 @@ const getParsedMoment = (input) => {
     }
     // tokenise
     var tokens = s.split(' ')
+    // try to find year
+    const possible_years = tokens.map(x => parseInt(x)).filter(x => x > now.year()-1)
+    if(possible_years.length > 0){
+        now.set('year', possible_years[0])
+    }
     // try to find month
     var temp_month = findCommon(tokens, months)
+    // if full spell not found, try abbreviation
     if(temp_month === -1){
         temp_month = findCommon(tokens, months_abbr)
     }
+    // if finally had a match, set it in moment
     if(temp_month !== -1){
         now.set('month', temp_month)
     }
-    // attempt to find time
+    // try to find date
+    const possible_dates = tokens.map(x => parseInt(x)).filter(x => x<32)
+    if(possible_dates.length > 0){
+        now.set('date', possible_dates[0])
+    }
+    // attempt to find time if hint word is present
     if(tokens.indexOf("at") !== -1){
         const at_pos = tokens.indexOf("at")
         var partial_tokens = tokens.slice(at_pos)
@@ -84,7 +106,7 @@ const getParsedMoment = (input) => {
         // if there are numbers
         if(partial_tok_nums.length !== 0){
             if(partial_tok_nums.length === 1){
-                // if time is expressed such as 7:00
+                // if time has a separator ':'
                 if(tokens[at_pos + 1].includes(':')){
                     const hrMin = tokens[at_pos + 1].split(':')
                     if(hrMin.length > 0 && !isNaN(parseInt(hrMin[0]))){
@@ -100,6 +122,10 @@ const getParsedMoment = (input) => {
                         now.set('hour', parseInt(tokens[at_pos + 1]))
                     }
                 }
+            } else {
+            // if no separator is present, try to parse two numbers
+                now.set('hour', partial_tok_nums[0])
+                now.set('minute', partial_tok_nums[1])
             }
         }
         // try to find the date
