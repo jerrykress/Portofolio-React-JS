@@ -14,7 +14,7 @@ function App() {
   const [tasks, setTasks] = useState([
       {
           id: 1,
-          text: 'Meeting with team',
+          text: 'Meeting with team 1',
           day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 0,
@@ -22,32 +22,32 @@ function App() {
       },
       {
           id: 2,
-          text: 'Go to the shop',
-          day: [2017, 11, 23, 7, 0],
+          text: 'Go to the shop 2',
+          day: [2017, 1, 20, 7, 0],
           reminder: false,
           priority: 1,
           completed: false
       },
       {
           id: 3,
-          text: 'A very long session with team',
-          day: [2017, 11, 23, 7, 0],
+          text: 'A very long session with team 3',
+          day: [2017, 10, 10, 7, 0],
           reminder: false,
           priority: 0,
           completed: false
       },
       {
           id: 4,
-          text: 'Meeting with team',
-          day: [2017, 11, 23, 7, 0],
+          text: 'Meeting with team 4',
+          day: [2017, 10, 10, 14, 0],
           reminder: false,
-          priority: 0,
+          priority: 2,
           completed: false
       },
       {
           id: 5,
-          text: 'Meeting with team',
-          day: [2017, 11, 23, 7, 0],
+          text: 'Meeting with team 5',
+          day: [2017, 1, 2, 3, 0],
           reminder: false,
           priority: 2,
           completed: false

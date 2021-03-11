@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 
+import moment from 'moment'
+
 const SortTaskButton = (props) => {
     const [showDrop, setShowDrop] = useState(false)
 
@@ -14,6 +16,7 @@ const SortTaskButton = (props) => {
 
     const sortByDueTime = () => {
         console.log('SortTaskButton: Sorting by due time')
+        props.setTasks([...props.tasks].sort((a,b) => (moment(a.day).isAfter(moment(b.day))) ? 1 : -1))
         hideDropdown()
     }
 
@@ -44,6 +47,16 @@ const SortTaskButton = (props) => {
             }
         </div>
     )
+}
+
+const isLargerArr = (a, b) => {
+    const len = Math.min(a.length, b.length)
+    for(let i = 0; i < len; i++){
+        if(a[i] < b[i]){
+            return false
+        }
+    }
+    return true
 }
 
 export default SortTaskButton
