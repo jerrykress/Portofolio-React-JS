@@ -25,5 +25,3 @@ Header.propTypes = {
 }
 
 export default Header
-
-// 2010 Mar 13 at 17:00
