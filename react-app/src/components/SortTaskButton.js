@@ -19,7 +19,7 @@ const SortTaskButton = (props) => {
 
     const sortByPriority = () => {
         console.log('SortTaskButton: Sorting by priority')
-        props.setTasks([...props.tasks].sort((a,b) => (a.priority > b.priority) ? 1 : -1))
+        props.setTasks([...props.tasks].sort((a,b) => (a.priority < b.priority) ? 1 : -1))
         hideDropdown()
     }
 
