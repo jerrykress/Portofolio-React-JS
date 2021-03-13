@@ -13,6 +13,7 @@ const AddTaskForm = (props) => {
     const [momentArr, setMomentArr] = useState(moment())
     // const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
+    const [project, setProject] = useState(0)
 
     const addTask = (e) => {
         e.preventDefault()
@@ -30,7 +31,7 @@ const AddTaskForm = (props) => {
         const id = Math.floor(Math.random() * 10000) + 1
         const reminder = false
         const completed = false
-        const task = {id, text, momentArr, reminder, priority, completed}
+        const task = {id, text, momentArr, reminder, priority, completed, project}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')
@@ -54,7 +55,7 @@ const AddTaskForm = (props) => {
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Project </label>
-                    <ProjectSelector className="form-control" text='Task Project' projects={props.projects}/>
+                    <ProjectSelector className="form-control" text='Task Project' projects={props.projects} setTaskProject={setProject}/>
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>

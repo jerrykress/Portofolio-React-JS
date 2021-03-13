@@ -18,7 +18,8 @@ function App() {
           day: [2017, 11, 23, 7, 0],
           reminder: false,
           priority: 0,
-          completed: false
+          completed: false,
+          project: 1
       },
       {
           id: 2,
@@ -26,7 +27,8 @@ function App() {
           day: [2017, 1, 20, 7, 0],
           reminder: false,
           priority: 1,
-          completed: false
+          completed: false,
+          project: 1
       },
       {
           id: 3,
@@ -34,7 +36,8 @@ function App() {
           day: [2017, 10, 10, 7, 0],
           reminder: false,
           priority: 0,
-          completed: false
+          completed: false,
+          project: 1
       },
       {
           id: 4,
@@ -42,7 +45,8 @@ function App() {
           day: [2017, 10, 10, 14, 0],
           reminder: false,
           priority: 2,
-          completed: false
+          completed: false,
+          project: 1
       },
       {
           id: 5,
@@ -50,16 +54,17 @@ function App() {
           day: [2017, 1, 2, 3, 0],
           reminder: false,
           priority: 2,
-          completed: false
+          completed: false,
+          project: 1
       },
   ])
 
   const [projects, setProjects] = useState([
     {
       id: 1,
-      abbr: 'ECS',
-      name: 'Cyber Security',
-      color: 'red'
+      abbr: 'None',
+      name: 'Default',
+      color: 'gray'
     },
     {
       id: 2,
@@ -73,6 +78,12 @@ function App() {
       name: 'Machine Learning',
       color: 'blue'
     },
+    {
+      id: 4,
+      abbr: 'ECS',
+      name: 'Cyber Security',
+      color: 'red'
+    },
   ])
 
   return (
@@ -80,7 +91,7 @@ function App() {
       <header>
         <Nav />
         <Header/>
-        <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects}/>
+        <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
         <TodayView tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
         <CompletedView tasks={tasks} setTasks={setTasks}/> 

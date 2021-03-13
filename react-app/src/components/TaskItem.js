@@ -13,6 +13,7 @@ const TaskItem = (props) => {
             <div className="w-full">
                 <span className={`inline-flex items-center justify-center px-2 py-1 mr-2 mb-2 -ml-0 text-xxs leading-none text-${levelColors[props.item.priority]}-100 bg-${levelColors[props.item.priority]}-600 rounded-full`}>
                     {/* {levels[props.item.priority]} */}
+                    {/* {props.item.project} */}
                     </span>
                 <h3 className="text-l font-semibold subpixel-antialiased" key={props.item.id}>{props.item.text}</h3>
                 <p className="text-xs italic text-gray-600 mt-2">{moment(props.item.day).format('llll')}</p>

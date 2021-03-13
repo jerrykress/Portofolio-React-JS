@@ -13,10 +13,10 @@ const TaskProjectButton = (props) => {
         setShowDrop(false)
     }
 
-    const setProjectDisplay = (p) => {
-        // const p = props.projects.filter(x => x.id === id)[0]
+    const setProjectHandler = (p) => {
         console.log("Setting task project:", p.name)
         setSelectedProject(p.abbr)
+        props.setTaskProject(p.id)
     }
 
     return (
@@ -34,7 +34,7 @@ const TaskProjectButton = (props) => {
                 <div className="absolute flex flex-col py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
                     {props.projects.length > 0
                         ? props.projects.map( project => (
-                            <div key={project.id} className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => setProjectDisplay(project)}>{project.name}</div>
+                            <div key={project.id} className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => setProjectHandler(project)}>{project.name}</div>
                         ))
                         : <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={hideDropdown}>No Project</div>
                     }
