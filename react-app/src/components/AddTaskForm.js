@@ -5,6 +5,7 @@ import moment from 'moment'
 import AddTaskButton from './task_components/AddTaskButton'
 import PriorityButton from './task_components/TaskPriorityButton'
 import ParseField from './DateParseInputField'
+import ProjectSelector from './task_components/TaskProjectButton'
 
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
@@ -49,11 +50,11 @@ const AddTaskForm = (props) => {
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>
-                    <PriorityButton className="form-control" text='Add Task' onClick={addTask} level={priority} setLevel={setPriority} />
+                    <PriorityButton className="form-control" text='Task Priority' level={priority} setLevel={setPriority} />
                 </div>
                 <div className="form-control col-span-1">
-                    <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Tag </label>
-                    <AddTaskButton className="form-control" text='Add Task' onClick={addTask}/>
+                    <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Project </label>
+                    <ProjectSelector className="form-control" text='Task Project' projects={props.projects}/>
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>

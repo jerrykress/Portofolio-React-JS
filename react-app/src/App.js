@@ -54,12 +54,33 @@ function App() {
       },
   ])
 
+  const [projects, setProjects] = useState([
+    {
+      id: 1,
+      abbr: 'ECS',
+      name: 'Cyber Security',
+      color: 'red'
+    },
+    {
+      id: 2,
+      abbr: 'IDSS',
+      name: 'Data Science',
+      color: 'yellow'
+    },
+    {
+      id: 3,
+      abbr: 'ML',
+      name: 'Machine Learning',
+      color: 'blue'
+    },
+  ])
+
   return (
     <div>
       <header>
         <Nav />
         <Header/>
-        <AddTaskForm globalTasks={tasks} setTasks={setTasks} />
+        <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects}/>
         <TodayView tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks}/> 
         <CompletedView tasks={tasks} setTasks={setTasks}/> 
