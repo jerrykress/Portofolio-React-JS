@@ -28,7 +28,7 @@ function App() {
           reminder: false,
           priority: 1,
           completed: false,
-          project: 1
+          project: 2
       },
       {
           id: 3,
@@ -37,7 +37,7 @@ function App() {
           reminder: false,
           priority: 0,
           completed: false,
-          project: 1
+          project: 2
       },
       {
           id: 4,
@@ -46,7 +46,7 @@ function App() {
           reminder: false,
           priority: 2,
           completed: false,
-          project: 1
+          project: 3
       },
       {
           id: 5,
@@ -55,7 +55,7 @@ function App() {
           reminder: false,
           priority: 2,
           completed: false,
-          project: 1
+          project: 3
       },
   ])
 
@@ -93,7 +93,7 @@ function App() {
         <Header/>
         <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
         <TodayView tasks={tasks} setTasks={setTasks} />
-        <TaskList tasks={tasks} setTasks={setTasks}/> 
+        <TaskList tasks={tasks} projects={projects} setTasks={setTasks}/> 
         <CompletedView tasks={tasks} setTasks={setTasks}/> 
       </header>
     </div>

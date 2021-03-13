@@ -39,7 +39,7 @@ const SortTaskButton = (props) => {
             </button>
 
             {showDrop &&
-                <div className="absolute flex flex-col py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
+                <div className="absolute flex flex-col w-full py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByDueTime}>Due First</div>
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByPriority}>High Priority</div>
                     {/* <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByTag}>Project</div> */}
