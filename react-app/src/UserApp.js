@@ -7,13 +7,15 @@ import './App.css';
 
 import Nav from './components/Nav'
 import TaskPage from './TaskPage'
+import ProjectPage from './ProjectPage';
 
 function UserApp({tasks, setTasks, projects, setProjects}) {
     return (
       <Router>
         <Nav />
         <Switch>
-          <Route path="/home/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+          <Route path="/app/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+          <Route path="/app/projects" render={(props) => (<ProjectPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
         </Switch>
       </Router>
     )

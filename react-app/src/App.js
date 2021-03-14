@@ -9,7 +9,7 @@ import UserApp from './UserApp'
 
 function App() {
   // User Auth
-  const [authToken, setAuthToken] = useState(false)
+  const [authToken, setAuthToken] = useState(true)
   // Global State
   const [tasks, setTasks] = useState([
       {
@@ -94,7 +94,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={LoginPage} />
-        <Route path="/home" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+        <Route path="/app" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
       </Switch>
     </Router>
   );
