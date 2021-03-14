@@ -13,7 +13,7 @@ function UserApp({tasks, setTasks, projects, setProjects}) {
       <Router>
         <Nav />
         <Switch>
-          <Route path="/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+          <Route path="/home/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
         </Switch>
       </Router>
     )

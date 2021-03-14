@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './index.css';
 import './App.css';
 
+import LoginPage from './LoginPage'
 import UserApp from './UserApp'
 
 function App() {
@@ -86,7 +87,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/tasks" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+        <Route path="/" exact component={LoginPage} />
+        <Route path="/home" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
       </Switch>
     </Router>
   );
