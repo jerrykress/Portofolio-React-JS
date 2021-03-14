@@ -1,15 +1,10 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 import './index.css';
 import './App.css';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
-import Header from './components/Header'
-import AddTaskForm from './components/AddTaskForm'
-import TaskList from './components/TaskList'
-import Nav from './components/Nav'
-import TodayView from './components/TodayView'
-import CompletedView from './components/CompletedTasksView'
+import UserApp from './UserApp'
 
 function App() {
   // global state
@@ -90,15 +85,9 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <header>
-          <Nav />
-          <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
-          <TodayView tasks={tasks} setTasks={setTasks} />
-          <TaskList tasks={tasks} projects={projects} setTasks={setTasks}/> 
-          <CompletedView tasks={tasks} setTasks={setTasks}/> 
-        </header>
-      </div>
+      <Switch>
+        <Route path="/tasks" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+      </Switch>
     </Router>
   );
 }
