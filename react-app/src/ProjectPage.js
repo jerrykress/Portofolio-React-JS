@@ -3,20 +3,29 @@ import React from 'react'
 import './index.css';
 import './App.css';
 
-import Header from './components/Header'
-import AddTaskForm from './components/AddTaskForm'
-import TaskList from './components/TaskList'
-import TodayView from './components/TodayView'
-import CompletedView from './components/CompletedTasksView'
+import ProjectList from './components/ProjectList'
 
 function ProjectPage({tasks, setTasks, projects, setProjects}) {
     return (
-        <div>
+      <div>
         <header>
-          <TaskList tasks={tasks} projects={projects} setTasks={setTasks}/> 
+          <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
         </header>
       </div>
     )
 }
 
 export default ProjectPage;
+
+
+/*
+Project:
+id
+name
+abbr
+color
+start time
+end time (target)
+participants
+importance score
+*/
