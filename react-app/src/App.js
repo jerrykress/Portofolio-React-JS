@@ -8,7 +8,9 @@ import LoginPage from './LoginPage'
 import UserApp from './UserApp'
 
 function App() {
-  // global state
+  // User Auth
+  const [authToken, setAuthToken] = useState(false)
+  // Global State
   const [tasks, setTasks] = useState([
       {
           id: 1,
@@ -83,6 +85,10 @@ function App() {
       color: 'red'
     },
   ])
+
+  if(!authToken){
+    return <LoginPage />
+  }
 
   return (
     <Router>
