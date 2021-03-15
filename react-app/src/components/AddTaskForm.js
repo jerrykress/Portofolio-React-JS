@@ -27,11 +27,15 @@ const AddTaskForm = (props) => {
             alert("Time can not be empty.")
             return
         }
-        // submit
+        // construct task params
         const id = Math.floor(Math.random() * 10000) + 1
+        const notes = 'Notes of the task needs to be implemented'
         const reminder = false
         const completed = false
-        const task = {id, text, momentArr, reminder, priority, completed, project}
+        const weight = 0.2
+        const participants = [1,2]
+        // new task here
+        const task = {id, text, notes, momentArr, reminder, priority, completed, project, weight, participants}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')
