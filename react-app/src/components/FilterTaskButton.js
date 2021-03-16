@@ -28,7 +28,7 @@ const FilterTaskButton = (props) => {
             </button>
 
             {showDrop &&
-                <div className="absolute flex flex-col w-full py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
+                <div className="absolute flex flex-col w-full max-h-52 overflow-y-auto py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
                     {
                         props.projects.map(project => (
                             <div key={project.id} className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => applyFilter(project)}>{project.abbr}</div>

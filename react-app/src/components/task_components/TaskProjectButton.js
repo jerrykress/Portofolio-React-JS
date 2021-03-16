@@ -32,7 +32,7 @@ const TaskProjectButton = (props) => {
             </button>
 
             {showDrop &&
-                <div className="absolute flex flex-col w-full py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
+                <div className="absolute flex flex-col overflow-y-auto w-full max-h-52 py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
                     {props.projects.length > 0
                         ? props.projects.map( project => (
                             <div key={project.id} className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => setProjectHandler(project)}>{project.name}</div>
