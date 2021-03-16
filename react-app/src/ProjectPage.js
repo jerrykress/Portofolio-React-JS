@@ -4,11 +4,13 @@ import './index.css';
 import './App.css';
 
 import ProjectList from './components/ProjectList'
+import AddProjectForm from './components/AddProjectForm'
 
 function ProjectPage({tasks, setTasks, projects, setProjects}) {
     return (
       <div>
         <header>
+          <AddProjectForm globalProjects={projects} setProjects={setProjects}/>
           <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
         </header>
       </div>
