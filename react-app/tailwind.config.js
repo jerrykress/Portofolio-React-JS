@@ -27,6 +27,16 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
     },
+    filter: { // defaults to {}
+      'none': 'none',
+      'grayscale': 'grayscale(1)',
+      'invert': 'invert(1)',
+      'sepia': 'sepia(1)',
+    },
+    backdropFilter: { // defaults to {}
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
     spacing: {
       px: '1px',
       0: '0px',
@@ -740,6 +750,7 @@ module.exports = {
     alignSelf: ['responsive'],
     animation: ['responsive'],
     appearance: ['responsive'],
+    backdropFilter: ['responsive'],
     backgroundAttachment: ['responsive'],
     backgroundClip: ['responsive'],
     backgroundColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
@@ -765,6 +776,7 @@ module.exports = {
     divideStyle: ['responsive'],
     divideWidth: ['responsive'],
     fill: ['responsive'],
+    filter: ['responsive'],
     flex: ['responsive'],
     flexDirection: ['responsive'],
     flexGrow: ['responsive'],
@@ -853,5 +865,7 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-filters'),
+  ],
 }

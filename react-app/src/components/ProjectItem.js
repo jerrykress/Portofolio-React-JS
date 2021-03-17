@@ -6,7 +6,7 @@ const ProjectItem = (props) => {
             <div className="w-full">
                 <h3 className="subpixel-antialiased w-full text-grey text-3xl mb-4" key={props.item.id}>{props.item.name}</h3>
                 {props.tasks.filter(x => x.project===props.item.id && x.completed===false).map(task => (
-                    <div className="text-gray-400">{task.text}</div>
+                    <div key={task.id} className="text-gray-400">{task.text}</div>
                 ))}
             </div>
 

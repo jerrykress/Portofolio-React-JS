@@ -26,6 +26,12 @@ const SortTaskButton = (props) => {
         hideDropdown()
     }
 
+    const sortByAlphabet = () => {
+        console.log('SortTaskButton: Sorting by alphabetical order')
+        props.setTasks([...props.tasks].sort((a,b) => (a.text > b.text) ? 1 : -1))
+        hideDropdown()
+    }
+
     return (
         <div className="relative" onMouseOver={showDropdown} onMouseLeave={hideDropdown}>
             <button className="inline-flex items-center h-10 px-3 py-4 mb-3 text-gray-400 border border-indigo-100 transition-colors duration-150 bg-white rounded-lg focus:outline-none hover:border-indigo-500 hover:text-indigo-700">
@@ -35,6 +41,7 @@ const SortTaskButton = (props) => {
 
             {showDrop &&
                 <div className="absolute flex flex-col w-full py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
+                    <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByAlphabet}>A-Z</div>
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByDueTime}>Due First</div>
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={sortByPriority}>High Priority</div>
                 </div>
