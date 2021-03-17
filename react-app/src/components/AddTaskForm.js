@@ -13,7 +13,9 @@ const AddTaskForm = (props) => {
     const [momentArr, setMomentArr] = useState(moment())
     // const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
-    const [project, setProject] = useState(0)
+    const [project, setProject] = useState(1)
+    const [notes, setNotes] = useState('')
+    const [weight, setWeight] = useState(0)
 
     const addTask = (e) => {
         e.preventDefault()
@@ -29,10 +31,8 @@ const AddTaskForm = (props) => {
         }
         // construct task params
         const id = Math.floor(Math.random() * 10000) + 1
-        const notes = 'Notes of the task needs to be implemented'
         const reminder = false
         const completed = false
-        const weight = 0.2
         const participants = [1,2]
         // new task here
         const task = {id, text, notes, momentArr, reminder, priority, completed, project, weight, participants}
@@ -53,13 +53,21 @@ const AddTaskForm = (props) => {
                     <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {day === "" ? "Date" : day} </label>
                     <ParseField setDisplayed={setDay} setMomentArr={setMomentArr} />
                 </div>
+                <div className="form-control col-span-3">
+                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> Notes </label>
+                    <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="details of the task"/>
+                </div>
+                <div className="form-control col-span-3">
+                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {`Weight: ${weight*100}%`} </label>
+                    <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-grey-darker border border-red rounded py-3 px-4 mb-3 transition-colors duration-300 hover:border-gray-400" type='text' value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="task weight (0-1)"/>
+                </div>
+                <div className="form-control col-span-3">
+                    <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Project </label>
+                    <ProjectSelector className="form-control" text='Task Project' projects={props.projects} setTaskProject={setProject}/>
+                </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>
                     <PriorityButton className="form-control" text='Task Priority' level={priority} setLevel={setPriority} />
-                </div>
-                <div className="form-control col-span-1">
-                    <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Project </label>
-                    <ProjectSelector className="form-control" text='Task Project' projects={props.projects} setTaskProject={setProject}/>
                 </div>
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>

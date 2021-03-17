@@ -24,19 +24,20 @@ const DialogModal = (props) => {
                             {levels[props.modalTask.priority]}
                         </span>
 
-                        <p className={`text-s uppercase ml-2 text-${levelColors[props.modalTask.priority]}-500`}>{props.projects.filter(x => x.id===props.modalTask.project)[0].name}</p>
+                        <p className={`text-s uppercase ml-2 text-${levelColors[props.modalTask.priority]}-500`}>{`${props.projects.filter(x => x.id===props.modalTask.project)[0].name}`}</p>
                     </div>
 
                     {/* <!--Title--> */}
                     <div className="flex justify-between items-center pb-2 mt-3">
-                        <p className="text-2xl font-bold">{props.modalTask.text}</p>
+                        <p className="text-gray-700 text-3xl">{props.modalTask.text}</p>
                     </div>
 
                     {/* <!--Body--> */}
                     <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.day).format('llll')}</p>
 
-                    
-                    <p className="text-s mb-5 mt-5 text-gray-500">{props.modalTask.notes}</p>
+                    <p className="text-s mt-5 text-gray-500">{`Task weight: ${props.modalTask.weight}`}</p>
+                    <p className="text-s mb-5 text-gray-500">{`Actual value: ${props.modalTask.weight * props.projects.filter(x => x.id===props.modalTask.project)[0].value}`}</p>
+                    <p className="text-s mb-5 text-gray-500">{props.modalTask.notes}</p>
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">

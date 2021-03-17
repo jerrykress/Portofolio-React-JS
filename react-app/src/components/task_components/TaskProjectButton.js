@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const TaskProjectButton = (props) => {
     const [showDrop, setShowDrop] = useState(false)
-    const [selectedProject, setSelectedProject] = useState('')
+    const [selectedProject, setSelectedProject] = useState('Default')
 
     const showDropdown = () => {
         setShowDrop(true)
@@ -15,18 +15,16 @@ const TaskProjectButton = (props) => {
 
     const setProjectHandler = (p) => {
         console.log("Setting task project:", p.name)
-        setSelectedProject(p.abbr)
+        setSelectedProject(p.name)
         props.setTaskProject(p.id)
         hideDropdown()
     }
 
     return (
         <div className="relative" onMouseOver={showDropdown} onMouseLeave={hideDropdown}>
-            <button className="inline-flex py-4 px-4 mb-3 w-full items-center justify-center w-12 h-12 mr-2 text-pink-700 transition-colors duration-150 bg-pink-100 rounded-md border border-red focus:outline-none hover:border-pink-800">
+            <button className={`inline-flex py-4 px-4 mb-3 w-full items-center w-12 h-12 mr-2  transition-colors duration-150 rounded-md border border-red focus:outline-none hover:border-pink-800 ${(selectedProject==='Default') && "text-gray-400"}`}>
                 {
-                    selectedProject === ''
-                        ? <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" fillRule="evenodd"></path></svg>
-                        : selectedProject
+                    selectedProject
                 }
                 
             </button>
