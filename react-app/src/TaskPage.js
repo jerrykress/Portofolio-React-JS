@@ -8,17 +8,41 @@ import AddTaskForm from './components/AddTaskForm'
 import TaskList from './components/TaskList'
 import TodayView from './components/TodayView'
 import CompletedView from './components/CompletedTasksView'
-import TaskModal from './components/TaskModal'
+
+import TaskModal from './components/task_components/TaskModal'
+import DeleteModal from './components/task_components/DeleteConfirmModal'
 
 function TaskPage({tasks, setTasks, projects, setProjects}) {
     const [modalPresented, setModalPresented] = useState(false)
+    const [deleteModalPresented, setDeleteModalPresented] = useState(false)
 
     const [modalTask, setModalTask] = useState(tasks[0])
 
-    const invokeModal = (t) => {
+    const invokeModal = (t, type) => {
+      if(type === 1){
+        invokeDetailModal(t)
+      }
+      if(type === 2){
+        invokeDeleteModal(t)
+      }
+    }
+
+    const invokeDetailModal = (t) => {
       console.log("Showing task modal for task", t.id, t.text)
       setModalTask(t)
       setModalPresented(true)
+    }
+
+    const invokeDeleteModal = (t) => {
+      console.log("Delete modal is presented", t.id, t.text)
+      setModalTask(t)
+      setDeleteModalPresented(true)
+    }
+
+    const deleteTask = (id) => {
+        console.log('delete', id)
+        setTasks(tasks.filter((task) => task.id !== id))
+        setDeleteModalPresented(false)
     }
 
     return (
@@ -27,6 +51,12 @@ function TaskPage({tasks, setTasks, projects, setProjects}) {
         {modalPresented &&
           <div>
             <TaskModal setModalPresented={setModalPresented} modalTask={modalTask} projects={projects}/>
+          </div>
+        }
+
+        {deleteModalPresented &&
+          <div>
+            <DeleteModal setModalPresented={setDeleteModalPresented} modalTask={modalTask} onDelete={deleteTask}/>
           </div>
         }
   

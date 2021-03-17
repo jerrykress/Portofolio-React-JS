@@ -9,7 +9,7 @@ const TaskItem = (props) => {
     const levelColors = ["green", "yellow", "red"]
     
     return (
-        <div className={`font-sans flex flex-wrap content-between h-auto m-4 bg-white border-2 border-gray-300 hover:${props.item.reminder ? "border-green-500" : "border-gray-500"} transition-colors duration-1000 p-6 rounded-md tracking-wide shadow-lg` + (props.item.reminder && " border-3 border-green-500")} onDoubleClick={()=>props.invokeModal(props.item)} >
+        <div className={`font-sans flex flex-wrap content-between h-auto m-4 bg-white border-2 border-gray-300 hover:${props.item.reminder ? "border-green-500" : "border-gray-500"} transition-colors duration-1000 p-6 rounded-md tracking-wide shadow-lg` + (props.item.reminder && " border-3 border-green-500")} onDoubleClick={()=>props.invokeModal(props.item, 1)} >
             <div className="w-full">
                 <span className={`inline-flex items-center justify-center px-2 py-1 mr-2 mb-2 -ml-0 text-xxs leading-none text-${levelColors[props.item.priority]}-100 bg-${levelColors[props.item.priority]}-600 rounded-full`}>
                     {/* {levels[props.item.priority]} */}
@@ -20,7 +20,7 @@ const TaskItem = (props) => {
             </div>
 
             <div className="mt-3 align-baseline -mb-2">
-                <TaskDeleteButton onClick={props.onDelete} text="Delete" item={props.item}/>
+                <TaskDeleteButton onClick={()=>props.invokeModal(props.item, 2)} text="Delete" item={props.item}/>
             </div>
             <div className="mt-3 align-baseline -mb-2">
                 <TaskRemindButton onClick={props.onToggle} text="Remind" item={props.item}/>
