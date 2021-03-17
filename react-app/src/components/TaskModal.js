@@ -1,6 +1,10 @@
 import React from 'react'
+import moment from 'moment'
 
 const DialogModal = (props) => {
+    const levels = ["LOW", "MED", "HIGH"]
+    const levelColors = ["green", "yellow", "red"]
+
     const closeSelf = () => {
         console.log("Close Modal")
         props.setModalPresented(false)
@@ -12,25 +16,32 @@ const DialogModal = (props) => {
             
             <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
 
-                {/* <!-- Add margin if you want to see some of the overlay behind the modal--> */}
-                <div className="py-4 text-left px-6">
+                {/* <!-- Modal Body --> */}
+                <div className="py-4 text-left px-6 mt-3">
+                    {/* <!--Priority Tag--> */}
+                    <div className="flex justify-start w-full items-center">
+                        <span className={`inline-flex items-center justify-center px-2 py-1 text-xs leading-none text-${levelColors[props.modalTask.priority]}-100 bg-${levelColors[props.modalTask.priority]}-600 rounded-full`}>
+                            {levels[props.modalTask.priority]}
+                        </span>
+
+                        <p className={`text-s uppercase ml-2 text-${levelColors[props.modalTask.priority]}-500`}>{props.projects.filter(x => x.id===props.modalTask.project)[0].name}</p>
+                    </div>
+
                     {/* <!--Title--> */}
-                    <div className="flex justify-between items-center pb-3">
-                        <p className="text-2xl font-bold">{props.modalTitle}</p>
-                        <div className="cursor-pointer z-50" onClick={closeSelf}>
-                            <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                            </svg>
-                        </div>
+                    <div className="flex justify-between items-center pb-2 mt-3">
+                        <p className="text-2xl font-bold">{props.modalTask.text}</p>
                     </div>
 
                     {/* <!--Body--> */}
-                    <p>{props.modalContent}</p>
+                    <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.day).format('llll')}</p>
+
+                    
+                    <p className="text-s mb-5 mt-5 text-gray-500">{props.modalTask.notes}</p>
 
                     {/* <!--Footer--> */}
-                    <div className="flex justify-end pt-2">
-                        <button className="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-                        <button className="px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" onClick={closeSelf}>Done</button>
+                    <div className="flex justify-end pt-2 pb-0">
+                        <button className="px-4 bg-transparent p-2 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
+                        <button className="px-4 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400" onClick={closeSelf}>Done</button>
                     </div>
                     
                 </div>

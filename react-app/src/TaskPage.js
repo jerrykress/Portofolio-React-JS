@@ -13,12 +13,11 @@ import TaskModal from './components/TaskModal'
 function TaskPage({tasks, setTasks, projects, setProjects}) {
     const [modalPresented, setModalPresented] = useState(false)
 
-    const [modalTitle, setModalTitle] = useState('Undefined Title')
-    const [modalContent, setModalContent] = useState('Undefined Content')
+    const [modalTask, setModalTask] = useState(tasks[0])
 
     const invokeModal = (t) => {
-      setModalTitle(t.text)
-      setModalContent(t.notes)
+      console.log("Showing task modal for task", t.id, t.text)
+      setModalTask(t)
       setModalPresented(true)
     }
 
@@ -27,7 +26,7 @@ function TaskPage({tasks, setTasks, projects, setProjects}) {
 
         {modalPresented &&
           <div>
-            <TaskModal setModalPresented={setModalPresented} modalTitle={modalTitle} modalContent={modalContent} />
+            <TaskModal setModalPresented={setModalPresented} modalTask={modalTask} projects={projects}/>
           </div>
         }
   
