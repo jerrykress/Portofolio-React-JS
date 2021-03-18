@@ -21,12 +21,17 @@ const AddTaskForm = (props) => {
         e.preventDefault()
         // if text is empty, abort
         if(!text){
-            alert("text can not be empty.")
+            alert("Task title can not be empty.")
             return
         }
         // if date is empty, abort
         if(!day){
             alert("Time can not be empty.")
+            return
+        }
+        // if weight is invalid
+        if(weight < 0 || weight > 1){
+            alert("Weight must be between 0 and 1.")
             return
         }
         // construct task params

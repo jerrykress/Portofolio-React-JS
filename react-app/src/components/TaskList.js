@@ -43,7 +43,7 @@ const Task = (props) => {
                     <SortDropDown tasks={props.tasks} setTasks={props.setTasks}/>
                 </div>
             </div>
-            <div className="grid gap-4 m-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+            <div className="grid gap-1 m-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {props.tasks.filter((task) => task.completed === false && (task.project === filteredProject || !filterState)).length > 0
                     ? (props.tasks.filter((task) => task.completed === false && (task.project === filteredProject || !filterState)).map((task) => (
                    <TaskItem key={task.id} onDelete={deleteTask} onToggle={toggleTask} onComplete={toggleCompleted} item={task} invokeModal={props.invokeModal} />)))  

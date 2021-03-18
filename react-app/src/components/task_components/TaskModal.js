@@ -12,13 +12,14 @@ const DialogModal = (props) => {
     const [renamedTitle, setRenamedTitle] = useState(props.modalTask.text)
 
     const closeSelf = () => {
-        console.log("Close task modal and save")
-        saveRename()
+        console.log("Close task modal and save changes")
         props.setModalPresented(false)
     }
 
     const saveRename = () => {
+        console.log("Close task modal and discard changes")
         props.modalTask.text = renamedTitle
+        props.setModalPresented(false)
     }
     
     return (
@@ -58,8 +59,8 @@ const DialogModal = (props) => {
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
-                        <button className="px-4 bg-transparent p-2 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-                        <button className="px-4 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400" onClick={closeSelf}>Save</button>
+                        <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" onClick={closeSelf}>Cancel</button>
+                        <button className="px-4 bg-indigo-500 p-2 rounded-lg focus:outline-none text-white hover:bg-indigo-400" onClick={saveRename}>Save</button>
                     </div>
                     
                 </div>

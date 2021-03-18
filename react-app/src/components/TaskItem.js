@@ -3,6 +3,7 @@ import moment from 'moment'
 import TaskDeleteButton from './task_components/TaskDeleteButton'
 import TaskRemindButton from './task_components/TaskRemindButton'
 import TaskCheckButton from './task_components/TaskCheckButton'
+import TaskMoreActionButton from './task_components/TaskMoreActionButton'
 
 const TaskItem = (props) => {
     const levels = ["LOW", "MED", "HIGH"]
@@ -27,6 +28,9 @@ const TaskItem = (props) => {
             </div>
             <div className="mt-3 align-baseline -mb-2">
                 <TaskCheckButton onClick={props.onComplete} text="Complete" item={props.item}/>
+            </div>
+            <div className="mt-3 align-baseline -mb-2">
+                <TaskMoreActionButton onClick={()=>props.invokeModal(props.item, 1)} text="More"/>
             </div>
         </div>
     )
