@@ -9,7 +9,6 @@ import Nav from './components/Nav'
 import TaskPage from './TaskPage'
 import ProjectPage from './ProjectPage';
 import CalendarPage from './CalendarPage'
-import { calendarFormat } from 'moment';
 
 function UserApp({tasks, setTasks, projects, setProjects}) {
     return (

@@ -25,8 +25,8 @@ const DeleteConfirmModal = (props) => {
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
-                        <button className="px-4 bg-transparent p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 mr-2" onClick={closeSelf}>Cancel</button>
-                        <button className="px-4 bg-red-500 p-2 rounded-lg text-white hover:bg-red-400" onClick={()=>props.onDelete(props.modalTask.id)}>Delete</button>
+                        <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-gray-400 hover:bg-gray-100 hover:text-gray-700 mr-2" onClick={closeSelf}>Cancel</button>
+                        <button className="px-4 bg-red-500 p-2 rounded-lg focus:outline-none text-white hover:bg-red-400" onClick={()=>props.onDelete(props.modalTask.id)}>Delete</button>
                     </div>
                     
                 </div>

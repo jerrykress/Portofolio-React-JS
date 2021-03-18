@@ -1,13 +1,24 @@
 import React from 'react'
+import { useState } from 'react'
 import moment from 'moment'
+
+import RenameButton from './ModalRenameButton'
 
 const DialogModal = (props) => {
     const levels = ["LOW", "MED", "HIGH"]
     const levelColors = ["green", "yellow", "red"]
 
+    const [isRenameActive, setIsRenameActive] = useState(false)
+    const [renamedTitle, setRenamedTitle] = useState(props.modalTask.text)
+
     const closeSelf = () => {
-        console.log("Close Modal")
+        console.log("Close task modal and save")
+        saveRename()
         props.setModalPresented(false)
+    }
+
+    const saveRename = () => {
+        props.modalTask.text = renamedTitle
     }
     
     return (
@@ -29,7 +40,13 @@ const DialogModal = (props) => {
 
                     {/* <!--Title--> */}
                     <div className="flex justify-between items-center pb-2 mt-3">
-                        <p className="text-gray-700 text-3xl">{props.modalTask.text}</p>
+                        {isRenameActive
+                            ? 
+                            <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-gray-600 text-2xl border border-red rounded py-0 px-2 mr-3 transition-colors duration-300 hover:border-gray-400" type='text' value={renamedTitle} onChange={(e) => setRenamedTitle(e.target.value)}/>
+                            :
+                            <p className="text-gray-700 text-3xl">{props.modalTask.text}</p>
+                        }
+                        <RenameButton isActive={isRenameActive} setIsActive={setIsRenameActive}/>
                     </div>
 
                     {/* <!--Body--> */}
@@ -42,7 +59,7 @@ const DialogModal = (props) => {
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
                         <button className="px-4 bg-transparent p-2 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-                        <button className="px-4 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400" onClick={closeSelf}>Done</button>
+                        <button className="px-4 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400" onClick={closeSelf}>Save</button>
                     </div>
                     
                 </div>
