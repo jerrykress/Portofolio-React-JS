@@ -62,7 +62,7 @@ function TaskPage({tasks, setTasks, projects, setProjects}) {
   
         <header className={`${modalPresented && "pointer-events-none"}`}>
           <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
-          <TodayView tasks={tasks} setTasks={setTasks} invokeModal={invokeModal} />
+          <TodayView tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} />
           <TaskList tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} /> 
           <CompletedView tasks={tasks} setTasks={setTasks} invokeModal={invokeModal} />
         </header>
