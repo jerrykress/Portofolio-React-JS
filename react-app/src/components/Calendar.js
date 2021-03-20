@@ -52,15 +52,12 @@ const Calendar = (props) => {
     
     let days = []
     let day = moment(startDate)
-    let formattedDate = ""
 
     while (day.isBefore(endDate)) {
       for (let i = 0; i < 7; i++) {
-        formattedDate = day.format('D')
-
-        const dayTasks = props.tasks.filter(x => x.day[2]===parseInt(formattedDate))
-
         const cloneDay = moment(day);
+        const dayTasks = props.tasks.filter(x => moment(x.day).isSame(cloneDay, 'day'))
+
         days.push(
           <div
             className={`calendar-col cell ${
@@ -71,8 +68,8 @@ const Calendar = (props) => {
             key={day}
             onClick={() => setSelectedDate(cloneDay)}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className="number">{day.format('D')}</span>
+            <span className="bg">{day.format('D')}</span>
             <div className="ml-3 mr-3 mt-8 flex-wrap text-left text-xs text-gray-500">
               {dayTasks.length !== 0
                 && dayTasks.map(x => <div key={x.id}>{x.text}</div>)  
