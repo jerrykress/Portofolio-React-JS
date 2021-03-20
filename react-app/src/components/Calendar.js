@@ -2,16 +2,13 @@ import React from "react";
 import { useState } from 'react'
 
 import moment from 'moment'
-import {format, startOfWeek, startOfMonth, addDays, endOfMonth, endOfWeek, isSameMonth, isSameDay, addMonths, subMonths, parse} from "date-fns";
 import './Calendar.css'
 
 const Calendar = (props) => {
-  const [currentMonth, setCurrentMonth] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [currentMonth, setCurrentMonth] = useState(moment())
+  const [selectedDate, setSelectedDate] = useState(moment())
 
   const renderHeader = () => {
-    const dateFormat = "yyyy MMMM";
-
     return (
       <div className="header row flex-middle">
         <div className="calendar-col calendar-col-start">
@@ -20,7 +17,7 @@ const Calendar = (props) => {
           </div>
         </div>
         <div className="calendar-col calendar-col-center">
-          <span>{format(currentMonth, dateFormat)}</span>
+          <span>{currentMonth.format('YYYY MMMM')}</span>
         </div>
         <div className="calendar-col calendar-col-end" onClick={nextMonth}>
           <div className="icon">chevron_right</div>
@@ -30,15 +27,14 @@ const Calendar = (props) => {
   }
 
   const renderDays = () => {
-    const dateFormat = "iii"
     const days = []
 
-    let startDate = startOfWeek(currentMonth);
+    let startDate = moment(currentMonth).startOf('w')
 
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="calendar-col calendar-col-center" key={i}>
-          {format(addDays(startDate, i), dateFormat)}
+          {startDate.add(i, 'd').format('ddd')}
         </div>
       )
     }
@@ -47,45 +43,44 @@ const Calendar = (props) => {
   }
 
   const renderCells = () => {
-    const monthStart = startOfMonth(currentMonth)
-    const monthEnd = endOfMonth(monthStart)
-    const startDate = startOfWeek(monthStart)
-    const endDate = endOfWeek(monthEnd)
-
-    const dateFormat = "d"
+    const monthStart = moment(currentMonth).startOf('month')
+    const monthEnd = moment(currentMonth).endOf('month')
+    const startDate = moment(monthStart).startOf('week')
+    const endDate = moment(monthEnd).endOf('week')
+    
     const rows = []
-
+    
     let days = []
-    let day = startDate
+    let day = moment(startDate)
     let formattedDate = ""
 
-    while (day <= endDate) {
+    while (day.isBefore(endDate)) {
       for (let i = 0; i < 7; i++) {
-        formattedDate = format(day, dateFormat);
+        formattedDate = day.format('D')
 
         const dayTasks = props.tasks.filter(x => x.day[2]===parseInt(formattedDate))
 
-        const cloneDay = day;
+        const cloneDay = moment(day);
         days.push(
           <div
             className={`calendar-col cell ${
-              !isSameMonth(day, monthStart)
+              !day.isSame(monthStart, 'M')
                 ? "disabled"
-                : isSameDay(day, selectedDate) ? "selected" : ""
+                : day.isSame(selectedDate, 'd') ? "selected" : ""
             }`}
             key={day}
-            onClick={() => onDateClick(cloneDay)}
+            onClick={() => setSelectedDate(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
             <div className="ml-3 mr-3 mt-8 flex-wrap text-left text-xs text-gray-500">
               {dayTasks.length !== 0
-                && dayTasks.map(x => <div>{x.text}</div>)  
+                && dayTasks.map(x => <div key={x.id}>{x.text}</div>)  
               }
             </div>
           </div>
         )
-        day = addDays(day, 1);
+        day.add(1, 'd')
       }
       rows.push(
         <div className="row " key={day}>
@@ -97,17 +92,22 @@ const Calendar = (props) => {
     return <div className="body">{rows}</div>;
   }
 
-  const onDateClick = (day) => {
-    console.log("Calendar date change:", day)
-    setSelectedDate(day)
-  }
-
   const nextMonth = () => {
-    setCurrentMonth(addMonths(currentMonth, 1))
+    console.log("Next Month")
+    setCurrentMonth(currentMonth.add(1, 'M'))
+    setSelectedDate(currentMonth.isSame(moment(), 'M')
+                    ? moment()
+                    : moment(currentMonth).startOf('M')
+    )
   }
 
   const prevMonth = () => {
-    setCurrentMonth(subMonths(currentMonth, 1))
+    console.log("Previous Month")
+    setCurrentMonth(currentMonth.subtract(1, 'M'))
+    setSelectedDate(currentMonth.isSame(moment(), 'M')
+                    ? moment()
+                    : moment(currentMonth).startOf('M')
+    )
   }
 
 
