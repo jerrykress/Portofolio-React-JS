@@ -1,15 +1,18 @@
 import React from "react";
 import {format, startOfWeek, startOfMonth, addDays, endOfMonth, endOfWeek, isSameMonth, isSameDay, addMonths, subMonths, parse} from "date-fns";
-import './calendar.css'
+import './Calendar.css'
 
 class Calendar extends React.Component {
-  state = {
-    currentMonth: new Date(),
-    selectedDate: new Date()
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      currentMonth: new Date(),
+      selectedDate: new Date()
+    };
+  }
 
   renderHeader() {
-    const dateFormat = "yyyy MMM";
+    const dateFormat = "yyyy MMMM";
 
     return (
       <div className="header row flex-middle">
@@ -62,6 +65,9 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
+
+        const dayTasks = this.props.tasks.filter(x => x.day[2]===parseInt(formattedDate))
+
         const cloneDay = day;
         days.push(
           <div
@@ -75,6 +81,11 @@ class Calendar extends React.Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            <div className="ml-3 mr-3 mt-8 flex-wrap text-left text-xs text-gray-500">
+              {dayTasks.length !== 0
+                && dayTasks.map(x => <div>{x.text}</div>)  
+              }
+            </div>
           </div>
         );
         day = addDays(day, 1);

@@ -76,6 +76,7 @@
 /* Calendar */
 
 .calendar {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   display: block;
   position: relative;
   width: 100%;
@@ -85,9 +86,9 @@
 
 .calendar .header {
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: 115%;
-  padding: 1.5em 0;
+  font-weight: 500;
+  font-size: 30px;
+  padding: 1em 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -97,7 +98,7 @@
 }
 
 .calendar .header .icon:hover {
-  transform: scale(1.75);
+  /* transform: scale(1.75); */
   transition: 0.25s ease-out;
   color: var(--main-color);
 }
@@ -130,7 +131,6 @@
 }
 
 .calendar .body .cell:hover {
-  background: var(--bg-color);
   transition: 0.5s ease-out;
 }
 
@@ -154,11 +154,12 @@
 
 .calendar .body .cell .number {
   position: absolute;
-  font-size: 82.5%;
+  font-size: 14px;
+  color: grey;
   line-height: 1;
   top: 0.75em;
   right: 0.75em;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .calendar .body .disabled {

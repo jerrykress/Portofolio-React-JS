@@ -17,7 +17,7 @@ function UserApp({tasks, setTasks, projects, setProjects}) {
         <Switch>
           <Route path="/app/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
           <Route path="/app/projects" render={(props) => (<ProjectPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
-          <Route path="/app/calendar" component={CalendarPage}/>
+          <Route path="/app/calendar" render={(props) => (<CalendarPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)}/>
         </Switch>
       </Router>
     )
