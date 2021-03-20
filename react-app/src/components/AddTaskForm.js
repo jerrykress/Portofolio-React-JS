@@ -9,7 +9,7 @@ import ProjectSelector from './task_components/TaskProjectButton'
 
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
-    const [day, setDay] = useState('Date')
+    const [dayDisplay, setDayDisplay] = useState('Date')
     const [momentArr, setMomentArr] = useState(moment())
     // const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
@@ -25,7 +25,7 @@ const AddTaskForm = (props) => {
             return
         }
         // if date is empty, abort
-        if(!day){
+        if(!dayDisplay){
             alert("Time can not be empty.")
             return
         }
@@ -36,15 +36,16 @@ const AddTaskForm = (props) => {
         }
         // construct task params
         const id = Math.floor(Math.random() * 10000) + 1
+        const day = momentArr
         const reminder = false
         const completed = false
         const participants = [1,2]
         // new task here
-        const task = {id, text, notes, momentArr, reminder, priority, completed, project, weight, participants}
+        const task = {id, text, notes, day, reminder, priority, completed, project, weight, participants}
         props.setTasks([...props.globalTasks, task])
         // clear form
         setText('')
-        setDay('')
+        setDayDisplay('')
     }
 
     return (
@@ -56,8 +57,8 @@ const AddTaskForm = (props) => {
                 </div>
 
                 <div className="form-control col-span-3">
-                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {day === "" ? "Date" : day} </label>
-                    <ParseField setDisplayed={setDay} setMomentArr={setMomentArr} />
+                    <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> {dayDisplay === "" ? "Date" : dayDisplay} </label>
+                    <ParseField setDisplayed={setDayDisplay} setMomentArr={setMomentArr} />
                 </div>
 
                 <div className="form-control col-span-3">

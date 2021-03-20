@@ -3,30 +3,12 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
-.icon {
-  font-family: "Material Icons", serif;
-  font-style: normal;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "liga";
-}
-
 /* VARIABLES */
 
 :root {
   --main-color: #1a8fff;
   --text-color-light: #ccc;
-  --border-color: #eee;
+  --border-color: rgb(218, 218, 218);
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
@@ -39,33 +21,13 @@
 
 /* GRID */
 
-.row {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
 .row-middle {
   align-items: center;
-}
-
-.calendar-col {
-  flex-grow: 1;
-  flex-basis: 0;
-  max-width: 100%;
 }
 
 .calendar-col-start {
   justify-content: flex-start;
   text-align: left;
-}
-
-.calendar-col-center {
-  justify-content: center;
-  text-align: center;
 }
 
 .calendar-col-end {
@@ -74,15 +36,6 @@
 }
 
 /* Calendar */
-
-.calendar {
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  display: block;
-  position: relative;
-  width: 100%;
-  background: var(--neutral-color);
-  border: 1px solid var(--border-color);
-}
 
 .calendar .header {
   text-transform: uppercase;
@@ -95,29 +48,6 @@
 .calendar .header .icon {
   cursor: pointer;
   transition: 0.15s ease-out;
-}
-
-.calendar .header .icon:hover {
-  /* transform: scale(1.75); */
-  transition: 0.25s ease-out;
-  color: var(--main-color);
-}
-
-.calendar .header .icon:first-of-type {
-  margin-left: 1em;
-}
-
-.calendar .header .icon:last-of-type {
-  margin-right: 1em;
-}
-
-.calendar .days {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: var(--text-color-light);
-  font-size: 70%;
-  padding: 0.75em 0;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .calendar .body .cell {
@@ -155,16 +85,10 @@
 .calendar .body .cell .number {
   position: absolute;
   font-size: 14px;
-  color: grey;
   line-height: 1;
   top: 0.75em;
   right: 0.75em;
   font-weight: 500;
-}
-
-.calendar .body .disabled {
-  color: var(--text-color-light);
-  pointer-events: none;
 }
 
 .calendar .body .cell .bg {

@@ -10,17 +10,21 @@ const Calendar = (props) => {
 
   const renderHeader = () => {
     return (
-      <div className="header row flex-middle">
-        <div className="calendar-col calendar-col-start">
-          <div className="icon" onClick={prevMonth}>
-            chevron_left
-          </div>
+      <div className="text-gray-700 text-4xl flex flex-wrap pt-6 pb-5 justify-between mb-8">
+        <div className="cursor-pointer hover:text-indigo-500 px-8" onClick={prevMonth}>
+          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+          </svg>
         </div>
-        <div className="calendar-col calendar-col-center">
+
+        <div className="">
           <span>{currentMonth.format('YYYY MMMM')}</span>
         </div>
-        <div className="calendar-col calendar-col-end" onClick={nextMonth}>
-          <div className="icon">chevron_right</div>
+
+        <div className="cursor-pointer hover:text-indigo-500 px-8" onClick={nextMonth}>
+          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+          </svg>
         </div>
       </div>
     )
@@ -33,13 +37,13 @@ const Calendar = (props) => {
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="calendar-col calendar-col-center" key={i}>
+        <div className="flex flex-grow justify-center" key={i}>
           {startDate.add(i, 'd').format('ddd')}
         </div>
       )
     }
 
-    return <div className="days row">{days}</div>
+    return <div className="flex pb-3 text-gray-700">{days}</div>
   }
 
   const renderCells = () => {
@@ -61,9 +65,9 @@ const Calendar = (props) => {
         days.push(
           <div
             className={`calendar-col cell ${
-              !day.isSame(monthStart, 'M')
-                ? "disabled"
-                : day.isSame(selectedDate, 'd') ? "selected" : ""
+              !day.isSame(monthStart, 'month')
+                ? "text-gray-200 pointer-events-none"
+                : day.isSame(selectedDate, 'd') ? "selected text-gray-500" : "text-gray-500"
             }`}
             key={day}
             onClick={() => setSelectedDate(cloneDay)}
@@ -80,7 +84,7 @@ const Calendar = (props) => {
         day.add(1, 'd')
       }
       rows.push(
-        <div className="row " key={day}>
+        <div className="flex border" key={day}>
           {days}
         </div>
       )
@@ -109,7 +113,7 @@ const Calendar = (props) => {
 
 
   return (
-    <div className="calendar">
+    <div className="calendar border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
