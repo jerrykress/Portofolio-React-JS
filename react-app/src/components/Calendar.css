@@ -15,12 +15,6 @@
 
 /* GENERAL */
 
-* {
-  box-sizing: border-box;
-}
-
-/* GRID */
-
 .row-middle {
   align-items: center;
 }
@@ -42,7 +36,6 @@
   font-weight: 500;
   font-size: 30px;
   padding: 1em 0;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .calendar .header .icon {
@@ -52,8 +45,7 @@
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
-  border-right: 1px solid var(--border-color);
+  /* height: 5em; */
   overflow: hidden;
   cursor: pointer;
   background: var(--neutral-color);
@@ -65,21 +57,9 @@
 }
 
 .calendar .body .selected {
-  border-left: 10px solid transparent;
+  border-left: 8px solid transparent;
   border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
   border-image-slice: 1;
-}
-
-.calendar .body .row {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.calendar .body .row:last-child {
-  border-bottom: none;
-}
-
-.calendar .body .cell:last-child {
-  border-right: none;
 }
 
 .calendar .body .cell .number {

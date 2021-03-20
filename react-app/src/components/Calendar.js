@@ -65,7 +65,7 @@ const Calendar = (props) => {
 
         days.push(
           <div
-            className={`calendar-col cell ${
+            className={`calendar-col cell h-${props.cellHeight} border-l ${
               !day.isSame(monthStart, 'month')
                 ? "text-gray-200 pointer-events-none"
                 : day.isSame(selectedDate, 'd') ? "selected text-gray-500" : "text-gray-500"
@@ -85,13 +85,13 @@ const Calendar = (props) => {
         day.add(1, 'd')
       }
       rows.push(
-        <div className="flex border" key={day}>
+        <div className="flex border-t" key={day}>
           {days}
         </div>
       )
       days = []
     }
-    return <div className="body">{rows}</div>;
+    return <div className="body border-b border-r">{rows}</div>;
   }
 
   const nextMonth = () => {
