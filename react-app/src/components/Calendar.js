@@ -10,8 +10,9 @@ const Calendar = (props) => {
 
   const renderHeader = () => {
     return (
-      <div className="text-gray-700 text-4xl flex flex-wrap pt-6 pb-5 justify-between mb-8">
-        <div className="cursor-pointer hover:text-indigo-500 px-8" onClick={prevMonth}>
+      <div className="text-gray-700 text-4xl uppercase flex flex-wrap pt-6 pb-5 justify-between mb-8 mx-6">
+
+        <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={prevMonth}>
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -21,7 +22,7 @@ const Calendar = (props) => {
           <span>{currentMonth.format('YYYY MMMM')}</span>
         </div>
 
-        <div className="cursor-pointer hover:text-indigo-500 px-8" onClick={nextMonth}>
+        <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={nextMonth}>
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
