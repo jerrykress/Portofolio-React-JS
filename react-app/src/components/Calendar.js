@@ -26,12 +26,12 @@ const Calendar = (props) => {
           <div className="icon">chevron_right</div>
         </div>
       </div>
-    );
+    )
   }
 
   const renderDays = () => {
-    const dateFormat = "iii";
-    const days = [];
+    const dateFormat = "iii"
+    const days = []
 
     let startDate = startOfWeek(currentMonth);
 
@@ -40,24 +40,24 @@ const Calendar = (props) => {
         <div className="calendar-col calendar-col-center" key={i}>
           {format(addDays(startDate, i), dateFormat)}
         </div>
-      );
+      )
     }
 
-    return <div className="days row">{days}</div>;
+    return <div className="days row">{days}</div>
   }
 
   const renderCells = () => {
-    const monthStart = startOfMonth(currentMonth);
-    const monthEnd = endOfMonth(monthStart);
-    const startDate = startOfWeek(monthStart);
-    const endDate = endOfWeek(monthEnd);
+    const monthStart = startOfMonth(currentMonth)
+    const monthEnd = endOfMonth(monthStart)
+    const startDate = startOfWeek(monthStart)
+    const endDate = endOfWeek(monthEnd)
 
-    const dateFormat = "d";
-    const rows = [];
+    const dateFormat = "d"
+    const rows = []
 
-    let days = [];
-    let day = startDate;
-    let formattedDate = "";
+    let days = []
+    let day = startDate
+    let formattedDate = ""
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -84,15 +84,15 @@ const Calendar = (props) => {
               }
             </div>
           </div>
-        );
+        )
         day = addDays(day, 1);
       }
       rows.push(
         <div className="row " key={day}>
           {days}
         </div>
-      );
-      days = [];
+      )
+      days = []
     }
     return <div className="body">{rows}</div>;
   }
@@ -100,15 +100,15 @@ const Calendar = (props) => {
   const onDateClick = (day) => {
     console.log("Calendar date change:", day)
     setSelectedDate(day)
-  };
+  }
 
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1))
-  };
+  }
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1))
-  };
+  }
 
 
   return (
@@ -120,4 +120,4 @@ const Calendar = (props) => {
   )
 }
 
-export default Calendar;
+export default Calendar
