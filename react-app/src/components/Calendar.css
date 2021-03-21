@@ -2,6 +2,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap);
 
 /* VARIABLES */
 
@@ -43,9 +44,13 @@
   transition: 0.15s ease-out;
 }
 
+.narrow-cal-item {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 14px;
+}
+
 .calendar .body .cell {
   position: relative;
-  /* height: 5em; */
   overflow: hidden;
   cursor: pointer;
   background: var(--neutral-color);
@@ -57,7 +62,7 @@
 }
 
 .calendar .body .selected {
-  border-left: 8px solid transparent;
+  border-left: 5px solid transparent;
   border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
   border-image-slice: 1;
 }
@@ -87,7 +92,7 @@
 .calendar .body .cell:hover .bg,
 .calendar .body .selected .bg {
   opacity: 0.05;
-  transition: 0.5s ease-in;
+  transition: 0.3s ease-in;
 }
 
 .calendar .body .calendar-col {

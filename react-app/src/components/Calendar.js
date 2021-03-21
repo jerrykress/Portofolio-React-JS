@@ -4,6 +4,8 @@ import { useState } from 'react'
 import moment from 'moment'
 import './Calendar.css'
 
+import CalendarTaskItem from './calendar_components/CalendarTaskItem'
+
 const Calendar = (props) => {
   const [currentMonth, setCurrentMonth] = useState(moment())
   const [selectedDate, setSelectedDate] = useState(moment())
@@ -18,8 +20,8 @@ const Calendar = (props) => {
           </svg>
         </div>
 
-        <div className="">
-          <span>{currentMonth.format('YYYY MMMM')}</span>
+        <div className="select-none">
+          <span className="pointer-events-none">{currentMonth.format('YYYY MMMM')}</span>
         </div>
 
         <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={nextMonth}>
@@ -44,7 +46,7 @@ const Calendar = (props) => {
       )
     }
 
-    return <div className="flex pb-3 text-gray-700">{days}</div>
+    return <div className="flex pb-3 text-gray-700 select-none">{days}</div>
   }
 
   const renderCells = () => {
@@ -73,11 +75,11 @@ const Calendar = (props) => {
             key={day}
             onClick={() => setSelectedDate(cloneDay)}
           >
-            <span className="number">{day.format('D')}</span>
-            <span className="bg">{day.format('D')}</span>
-            <div className="ml-3 mr-3 mt-8 flex-wrap text-left text-xs text-gray-500">
+            <span className="number select-none">{day.format('D')}</span>
+            <span className="bg select-none">{day.format('D')}</span>
+            <div className="ml-2 mr-2 mt-8 flex-wrap text-left text-xs text-gray-500">
               {dayTasks.length !== 0
-                && dayTasks.map(x => <div key={x.id}>{x.text}</div>)  
+                && dayTasks.map(x => <CalendarTaskItem key={x.id} item={x}/>)
               }
             </div>
           </div>
@@ -114,7 +116,7 @@ const Calendar = (props) => {
 
 
   return (
-    <div className="calendar border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+    <div className="calendar border-2 border-gray-300 p-6 mx-6 mt-8 rounded-md tracking-wide shadow-lg">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
