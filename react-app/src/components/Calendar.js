@@ -7,10 +7,12 @@ import './Calendar.css'
 import CalendarTaskItem from './calendar_components/CalendarTaskItem'
 
 const Calendar = (props) => {
+  // const [props.currentMonth, props.setCurrentMonth] = useState(moment())
+  // const [props.selectedDate, props.setSelectedDate] = useState(moment())
 
   const renderHeader = () => {
     return (
-      <div className="text-gray-700 text-4xl uppercase flex flex-wrap pt-3 pb-1 justify-between mb-8 mx-6">
+      <div className="text-gray-700 text-4xl uppercase flex flex-wrap pt-3 pb-1 justify-between mb-6 mx-6">
 
         <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={prevMonth}>
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
