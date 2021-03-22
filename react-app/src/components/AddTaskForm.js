@@ -6,12 +6,13 @@ import AddTaskButton from './task_components/AddTaskButton'
 import PriorityButton from './task_components/TaskPriorityButton'
 import ParseField from './DateParseInputField'
 import ProjectSelector from './task_components/TaskProjectButton'
+import ReminderToggle from './task_components/TaskToggleReminderButton'
 
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
     const [dayDisplay, setDayDisplay] = useState('Date')
     const [momentArr, setMomentArr] = useState(moment())
-    // const [reminder, setReminder] = useState(false)
+    const [reminder, setReminder] = useState(false)
     const [priority, setPriority] = useState(0)
     const [project, setProject] = useState(1)
     const [notes, setNotes] = useState('')
@@ -37,7 +38,6 @@ const AddTaskForm = (props) => {
         // construct task params
         const id = Math.floor(Math.random() * 10000) + 1
         const day = momentArr
-        const reminder = false
         const completed = false
         const participants = [1,2]
         // new task here
@@ -79,6 +79,11 @@ const AddTaskForm = (props) => {
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Priority </label>
                     <PriorityButton className="form-control" text='Task Priority' level={priority} setLevel={setPriority} />
+                </div>
+
+                <div className="form-control col-span-1">
+                    <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Reminder </label>
+                    <ReminderToggle className="form-control" text='Task Reminder' reminder={reminder} setReminder={setReminder}/>
                 </div>
                 
                 <div className="form-control col-span-1">
