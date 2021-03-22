@@ -62,8 +62,8 @@
 }
 
 .calendar .body .selected {
-  border-left: 5px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(45deg, #1a8fff 0%, #818cf8 40%);
   border-image-slice: 1;
 }
 

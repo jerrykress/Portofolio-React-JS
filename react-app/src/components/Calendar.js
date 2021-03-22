@@ -7,12 +7,10 @@ import './Calendar.css'
 import CalendarTaskItem from './calendar_components/CalendarTaskItem'
 
 const Calendar = (props) => {
-  const [currentMonth, setCurrentMonth] = useState(moment())
-  const [selectedDate, setSelectedDate] = useState(moment())
 
   const renderHeader = () => {
     return (
-      <div className="text-gray-700 text-4xl uppercase flex flex-wrap pt-6 pb-5 justify-between mb-8 mx-6">
+      <div className="text-gray-700 text-4xl uppercase flex flex-wrap pt-3 pb-1 justify-between mb-8 mx-6">
 
         <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={prevMonth}>
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,7 +19,7 @@ const Calendar = (props) => {
         </div>
 
         <div className="select-none">
-          <span className="pointer-events-none">{currentMonth.format('YYYY MMMM')}</span>
+          <span className="pointer-events-none">{props.currentMonth.format('YYYY MMMM')}</span>
         </div>
 
         <div className="cursor-pointer inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 bg-white focus:outline-none hover:text-blue-500 hover:bg-gray-100" onClick={nextMonth}>
@@ -36,7 +34,7 @@ const Calendar = (props) => {
   const renderDays = () => {
     const days = []
 
-    let startDate = moment(currentMonth).startOf('w')
+    let startDate = moment(props.currentMonth).startOf('w')
 
     for (let i = 0; i < 7; i++) {
       days.push(
@@ -50,8 +48,8 @@ const Calendar = (props) => {
   }
 
   const renderCells = () => {
-    const monthStart = moment(currentMonth).startOf('month')
-    const monthEnd = moment(currentMonth).endOf('month')
+    const monthStart = moment(props.currentMonth).startOf('month')
+    const monthEnd = moment(props.currentMonth).endOf('month')
     const startDate = moment(monthStart).startOf('week')
     const endDate = moment(monthEnd).endOf('week')
     
@@ -70,10 +68,10 @@ const Calendar = (props) => {
             className={`calendar-col cell h-${props.cellHeight} border-l ${
               !day.isSame(monthStart, 'month')
                 ? "text-gray-200 pointer-events-none"
-                : day.isSame(selectedDate, 'd') ? "selected text-gray-500" : "text-gray-500"
+                : day.isSame(props.selectedDate, 'd') ? "selected text-gray-500" : "text-gray-500"
             }`}
             key={day}
-            onClick={() => setSelectedDate(cloneDay)}
+            onClick={() => props.setSelectedDate(cloneDay)}
           >
             <span className="number select-none">{day.format('D')}</span>
             <span className="bg select-none">{day.format('D')}</span>
@@ -98,25 +96,25 @@ const Calendar = (props) => {
 
   const nextMonth = () => {
     console.log("Next Month")
-    setCurrentMonth(currentMonth.add(1, 'M'))
-    setSelectedDate(currentMonth.isSame(moment(), 'M')
+    props.setCurrentMonth(props.currentMonth.add(1, 'M'))
+    props.setSelectedDate(props.currentMonth.isSame(moment(), 'M')
                     ? moment()
-                    : moment(currentMonth).startOf('M')
+                    : moment(props.currentMonth).startOf('M')
     )
   }
 
   const prevMonth = () => {
     console.log("Previous Month")
-    setCurrentMonth(currentMonth.subtract(1, 'M'))
-    setSelectedDate(currentMonth.isSame(moment(), 'M')
+    props.setCurrentMonth(props.currentMonth.subtract(1, 'M'))
+    props.setSelectedDate(props.currentMonth.isSame(moment(), 'M')
                     ? moment()
-                    : moment(currentMonth).startOf('M')
+                    : moment(props.currentMonth).startOf('M')
     )
   }
 
 
   return (
-    <div className="calendar border-2 border-gray-300 p-6 mx-6 mt-8 rounded-md tracking-wide shadow-lg">
+    <div className="calendar border-2 border-gray-300 p-5 mx-6 mt-6 rounded-md tracking-wide shadow-lg">
       {renderHeader()}
       {renderDays()}
       {renderCells()}

@@ -15,7 +15,7 @@ function App() {
       {
           id: 1,
           text: 'Meeting with team 1',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 23, 7, 0],
           reminder: false,
           priority: 0,
@@ -27,7 +27,7 @@ function App() {
       {
           id: 2,
           text: 'Assessed Lab Exercise',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 20, 7, 0],
           reminder: false,
           priority: 1,
@@ -39,7 +39,7 @@ function App() {
       {
           id: 3,
           text: 'Read lecture material',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 10, 7, 0],
           reminder: false,
           priority: 0,
@@ -51,7 +51,7 @@ function App() {
       {
           id: 4,
           text: 'Worksheet Exercises',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 10, 14, 0],
           reminder: false,
           priority: 2,
@@ -63,7 +63,7 @@ function App() {
       {
           id: 5,
           text: 'Meeting with team 5',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 2, 3, 0],
           reminder: false,
           priority: 2,
@@ -75,7 +75,7 @@ function App() {
       {
           id: 6,
           text: 'Group essay final draft',
-          notes: 'Details of the task is written here',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           day: [2021, 2, 1, 17, 0],
           reminder: false,
           priority: 1,

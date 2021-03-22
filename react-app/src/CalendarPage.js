@@ -1,9 +1,11 @@
 import React from 'react'
 import moment from 'moment'
 import { useState } from 'react'
-import Calendar from './components/Calendar'
 
-function CalendarPage(props) {
+import Calendar from './components/Calendar'
+import DayItem from './components/calendar_components/CalendarDayItem'
+
+function CalendarPage({tasks, setTasks, projects, setProjects}) {
   const [currentMonth, setCurrentMonth] = useState(moment())
   const [selectedDate, setSelectedDate] = useState(moment())
 
@@ -23,7 +25,7 @@ function CalendarPage(props) {
 
   return (
       <div className="">
-        <div className="bg-white shadow-md rounded px-8 pt-4 pb-6 mb-0 my-2">
+        <div className="bg-white shadow-md rounded px-8 pt-1 pb-2 mb-0 my-2">
 
           <div className="text-gray-600 flex items-center justify-center select-none">
             <button className="inline-flex items-center justify-center w-10 h-10 transition-colors duration-300 bg-white rounded-full focus:outline-none hover:bg-gray-200" onClick={increaseCellHeight}>
@@ -44,8 +46,16 @@ function CalendarPage(props) {
         </div>
 
 
+        <Calendar tasks={tasks} cellHeight={cellHeight} currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
 
-        <Calendar tasks={props.tasks} cellHeight={cellHeight}/>
+        <div className="mx-7 mt-8 mb-5 text-gray-600 text-2xl">{selectedDate.format('dddd, MMMM Do YYYY')}</div>
+
+        <div className="px-2">
+          {tasks.filter(x => moment(x.day).isSame(selectedDate, 'day')).map(x => 
+            <DayItem key={x.id} projects={projects} item={x}/>
+          )}
+
+        </div>
       </div>
   )
 }
