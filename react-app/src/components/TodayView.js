@@ -19,8 +19,8 @@ const TodayView = (props) => {
 
     return (
         <div className="">
-            <p className="mx-12 mt-12 text-gray-700 text-3xl">Highlighted Tasks</p>
-            <div className="grid gap-1 m-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+            <p className="mx-12 mt-10 text-gray-700 text-3xl">Highlighted Tasks</p>
+            <div className="grid gap-1 mx-10 mt-6 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {props.tasks.filter((task) => task.reminder === true && task.completed === false).length > 0
                     ? (props.tasks.filter((task) => task.reminder === true && task.completed === false).map((task) => (
                     <TaskItem key={task.id} onDelete={deleteTask} onToggle={toggleTask} onComplete={toggleCompleted} item={task} invokeModal={props.invokeModal} />))) 

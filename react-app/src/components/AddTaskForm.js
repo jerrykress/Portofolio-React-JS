@@ -49,7 +49,7 @@ const AddTaskForm = (props) => {
     }
 
     return (
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2">
+        <div className="bg-white shadow-md rounded px-8 pt-3 pb-4 mb-4 my-2">
             <div className="tracking-wide px-3 mb-6 md:mb-0 ml-2 mr-2 grid gap-4 sm:grid-cols-3 md:grid-cols-9">
                 <div className="form-control col-span-3">
                     <label className="subpixel-antialiased uppercase w-full text-grey-darker text-xs mb-3"> Title </label>
