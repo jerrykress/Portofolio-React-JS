@@ -7,8 +7,6 @@ import './Calendar.css'
 import CalendarTaskItem from './calendar_components/CalendarTaskItem'
 
 const Calendar = (props) => {
-  // const [props.currentMonth, props.setCurrentMonth] = useState(moment())
-  // const [props.selectedDate, props.setSelectedDate] = useState(moment())
 
   const renderHeader = () => {
     return (

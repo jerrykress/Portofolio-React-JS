@@ -95,7 +95,7 @@ function App() {
       startTime: [2017, 1, 2, 3, 0],
       endTime: [2017, 1, 2, 3, 0],
       participants: [1,2],
-      value: 10
+      value: 15
     },
     {
       id: 2,
@@ -115,7 +115,7 @@ function App() {
       startTime: [2017, 1, 2, 3, 0],
       endTime: [2017, 1, 2, 3, 0],
       participants: [1,2],
-      value: 10
+      value: 20
     },
     {
       id: 4,
