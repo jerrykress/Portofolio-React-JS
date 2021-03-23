@@ -3,6 +3,7 @@ import { useState } from 'react'
 import moment from 'moment'
 
 import RenameButton from './../task_components/ModalRenameButton'
+import ProgressBar from './ProjectProgressBar'
 
 
 const ProjectDetailModal = (props) => {
@@ -27,7 +28,7 @@ const ProjectDetailModal = (props) => {
         <div className="z-40 fixed w-full h-full top-0 left-0 flex items-center justify-center">
             <div className="absolute w-full h-full bg-gray-900 opacity-70"></div>
             
-            <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div className="bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto">
 
                 {/* <!-- Modal Body --> */}
                 <div className="py-4 text-left px-6 mt-3">
@@ -44,14 +45,24 @@ const ProjectDetailModal = (props) => {
                     </div>
 
                     {/* <!--Body--> */}
-                    <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalProject.endTime).format('llll')}</p>
+                    <div className="flex items-center gap-2">
+                        <p className="text-s italic text-gray-500">{moment(props.modalProject.startTime).format('llll')}</p>
+
+                        <svg className="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+
+                        <p className="text-s italic text-gray-500">{moment(props.modalProject.endTime).format('llll')}</p>
+                    </div>
+
+                    <ProgressBar />
 
                     <p className="text-s mt-5 text-gray-500">{`Project Info Placeholder`}</p>
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
-                        <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" onClick={closeSelf}>Cancel</button>
-                        <button className="px-4 bg-indigo-500 p-2 rounded-lg focus:outline-none text-white hover:bg-indigo-400" onClick={saveRename}>Save</button>
+                        <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onClick={closeSelf}>Cancel</button>
+                        <button className="px-4 bg-blue-500 p-2 rounded-lg focus:outline-none text-white hover:bg-blue-400" onClick={saveRename}>Save</button>
                     </div>
                     
                 </div>
