@@ -92,8 +92,8 @@ function App() {
       abbr: 'None',
       name: 'Default',
       color: 'gray',
-      startTime: [2017, 1, 2, 3, 0],
-      endTime: [2017, 1, 2, 3, 0],
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 3, 3, 0],
       participants: [1,2],
       value: 15
     },
@@ -102,8 +102,8 @@ function App() {
       abbr: 'IDSS',
       name: 'Data Science',
       color: 'yellow',
-      startTime: [2017, 1, 2, 3, 0],
-      endTime: [2017, 1, 2, 3, 0],
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 5, 3, 0],
       participants: [1,2],
       value: 10
     },
@@ -112,8 +112,8 @@ function App() {
       abbr: 'ML',
       name: 'Machine Learning',
       color: 'blue',
-      startTime: [2017, 1, 2, 3, 0],
-      endTime: [2017, 1, 2, 3, 0],
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 8, 3, 0],
       participants: [1,2],
       value: 20
     },
@@ -122,8 +122,8 @@ function App() {
       abbr: 'ECS',
       name: 'Cyber Security',
       color: 'red',
-      startTime: [2017, 1, 2, 3, 0],
-      endTime: [2017, 1, 2, 3, 0],
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 10, 3, 0],
       participants: [1,2],
       value: 10
     },

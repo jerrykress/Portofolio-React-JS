@@ -5,7 +5,7 @@ import ProjectItem from './project_components/ProjectItem'
 
 const ProjectList = (props) => {
     return (
-        <div className="m-10">
+        <div className="mx-10">
             {props.projects.map(project => (
                 <ProjectItem key={project.id} item={project} tasks={props.tasks}/>
             ))}
