@@ -7,7 +7,7 @@ a list of all the tasks that are currently active (not completed)
 import { useState } from 'react'
 
 import TaskItem from './TaskItem'
-import SortDropDown from './SortTaskButton'
+import SortDropDown from './task_components/SortTaskButton'
 import FilterButton from './FilterTaskButton'
 
 const Task = (props) => {
