@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-import ProjectItem from './ProjectItem'
+import ProjectItem from './project_components/ProjectItem'
 
 const ProjectList = (props) => {
     return (
