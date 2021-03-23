@@ -30,7 +30,8 @@ const [showDrop, setShowDrop] = useState(false)
                 <div className="absolute flex flex-col w-full py-2 mt-0 text-gray-700 bg-white border rounded-lg shadow-lg">
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => selectionHandler(0)}>Project Value</div>
                     <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => selectionHandler(1)}>Due Date</div>
-                    <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => selectionHandler(1)}>High Priority</div>
+                    <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => selectionHandler(2)}>Acronym</div>
+                    <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => selectionHandler(3)}>Progress</div>
                 </div>
             }
         </div>

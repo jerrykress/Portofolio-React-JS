@@ -18,7 +18,7 @@ function TaskPage({tasks, setTasks, projects, setProjects}) {
 
     const [modalTask, setModalTask] = useState(tasks[0])
 
-    const invokeModal = (t, type) => {
+    const invokeModal = (t, type) => { // t-task type-modal
       if(type === 1){
         invokeDetailModal(t)
       }
