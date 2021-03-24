@@ -11,6 +11,7 @@ import SortTaskButton from './components/task_components/SortTaskButton'
 import SelectFeaturedAttrBtn from './components/project_components/SelectFeaturedAttrBtn'
 
 import ProjectDetailModal from './components/project_components/ProjectDetailModal'
+import ProjectWarningModal from './components/project_components/ProjectWarningModal'
 
 function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}) {
     const [featuredAttr, setFeaturedAttr] = useState(0)
@@ -20,30 +21,47 @@ function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}
       2 - Abbr
       3 - Progress
     */
-    const [modalPresented, setModalPresented] = useState(false)
+    const [modalTask, setModalTask] = useState(tasks[0])
     const [modalProject, setModalProject] = useState(projects[0])
+    const [detailModalPresented, setDetailModalPresented] = useState(false)
+    const [warningModalPresented, setWarningModalPresented] = useState(false)
 
-    const invokeModal = (p, type) => {
+    const invokeModal = (item, type) => {
       if(type === 1){
-        invokeDetailModal(p)
+        invokeDetailModal(item) // project item
+      }
+      if(type === 2){
+        invokeWarningModal(item) //task item
       }
     }
 
     const invokeDetailModal = (p) => {
       console.log("Showing task modal for task", p.id, p.name)
       setModalProject(p)
-      setModalPresented(true)
+      setDetailModalPresented(true)
+    }
+
+    const invokeWarningModal = (t) => {
+      console.log("Asking if the task is to be dropped from the project", t.id)
+      setModalTask(t)
+      setWarningModalPresented(true)
     }
 
 
     return (
       <div>
-
-        {modalPresented &&
+        
+        {warningModalPresented &&
           <div>
-            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setModalPresented} forceRefreshTasks={forceRefreshTasks}/>
+            <ProjectWarningModal setModalPresented={setWarningModalPresented} modalTask={modalTask} forceRefresh={forceRefreshTasks}/>
           </div>
+        }
 
+
+        {detailModalPresented &&
+          <div>
+            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks} invokeModal={invokeModal}/>
+          </div>
         }
 
         <AddProjectForm globalProjects={projects} setProjects={setProjects}/>
@@ -57,7 +75,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}
           </div>
         </div>
         
-        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setModalPresented} forceRefreshTasks={forceRefreshTasks}/>
+        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks}/>
         
       </div>
     )

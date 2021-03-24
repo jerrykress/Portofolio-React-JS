@@ -71,14 +71,14 @@ const ProjectDetailModal = (props) => {
 
                     <div className="mt-5 -mx-1">
                         {props.tasks.filter(x => x.project===props.modalProject.id).map(task => 
-                            <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} forceRefreshTasks={props.forceRefreshTasks}/>
+                            <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} forceRefreshTasks={props.forceRefreshTasks} invokeModal={props.invokeModal}/>
                         )}
                     </div>
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
                         <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onClick={closeSelf}>Cancel</button>
-                        <button className="px-4 bg-blue-500 p-2 rounded-lg focus:outline-none text-white hover:bg-blue-400" onClick={saveRename}>Save</button>
+                        <button className="px-4 bg-blue-500 p-2 rounded-lg focus:outline-none text-white hover:bg-blue-400" onClick={saveRename}>Done</button>
                     </div>
                     
                 </div>

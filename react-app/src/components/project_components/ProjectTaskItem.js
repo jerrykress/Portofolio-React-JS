@@ -6,8 +6,7 @@ const ProjectTaskItem = (props) => {
     const [hovered, setHovered] = useState(false)
 
     const disOwnTask = (t) => {
-        props.item.project = 1
-        props.forceRefreshTasks()
+        props.invokeModal(t, 2)
     }
 
     const completeTask = (t) => {
