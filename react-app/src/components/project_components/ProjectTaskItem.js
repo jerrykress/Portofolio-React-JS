@@ -1,10 +1,17 @@
 import React from 'react'
+import { useState } from 'react'
 
 const ProjectTaskItem = (props) => {
     const levelColors = ["green", "yellow", "red"]
+    const [hovered, setHovered] = useState(false)
+
+    const disOwnTask = (t) => {
+        props.item.project = 1
+        props.refresh()
+    }
 
     return (
-        <div className={`flex items-center justify-between truncate select-none mb-1 w-full px-2 py-1 rounded-full transition-colors duration-500 hover:bg-gray-100 ${props.item.completed && "opacity-40 line-through"}`}>
+        <div className={`flex items-center justify-between truncate select-none mb-1 w-full px-2 py-1 rounded-full transition-colors duration-500 hover:bg-gray-100 ${props.item.completed && "opacity-40 line-through"}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
 
             <div className="flex items-center">
                 <div className={`w-1 h-4 mt-0 mr-2 bg-${levelColors[props.item.priority]}-600 rounded-full`}></div>
@@ -12,6 +19,7 @@ const ProjectTaskItem = (props) => {
             </div>
 
             <div className="flex items-center ml-3">
+                {props.showDisownBtn && hovered && <DisOwnTaskBtn onClick={disOwnTask} task={props.item}/>}
                 {props.showWeight &&
                     <div className="items-center text-gray-600 truncate mr-3">Weight: {props.item.weight}</div>
                 }
@@ -30,4 +38,18 @@ export default ProjectTaskItem
 ProjectTaskItem.defaultProps = { 
     showWeight: true,
     showValue: true, 
+    showDisownBtn: false,
+}
+
+const DisOwnTaskBtn = (props) => {
+    return (
+        <button className={`inline-flex items-center justify-center ml-1 transition-colors duration-300  opacity-50 focus:outline-none text-gray-400 hover:opacity-100 hover:text-red-500`}
+        onClick={() => props.onClick(props.task)}>
+            
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+
+        </button>
+    )
 }

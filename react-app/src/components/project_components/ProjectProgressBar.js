@@ -12,10 +12,10 @@ const ProjectProgressBar = (props) => {
             </div>
 
             {props.completedPercent !== 100 && 
-                <div className="bg-clip-text text-transparent bg-gradient-to-l from-purple-400 via-pink-500 to-red-500 select-none">
+                <div className="select-none">
                     {props.pendingPercent <= props.completedPercent
-                        ? "On track"
-                        : "Behind Schedule"
+                        ? <div className="bg-clip-text text-transparent bg-gradient-to-l from-blue-300 to-green-400">On track</div>
+                        : <div className="bg-clip-text text-transparent bg-gradient-to-l from-purple-400 via-pink-500 to-red-500">Behind Schedule</div>
                     }
                 </div>
             }

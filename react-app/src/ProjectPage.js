@@ -41,7 +41,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects}) {
 
         {modalPresented &&
           <div>
-            <ProjectDetailModal tasks={tasks} modalProject={modalProject} setModalPresented={setModalPresented}/>
+            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setModalPresented}/>
           </div>
 
         }
