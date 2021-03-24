@@ -113,7 +113,7 @@ function App() {
       name: 'Machine Learning',
       color: 'blue',
       startTime: [2021, 2, 2, 3, 0],
-      endTime: [2021, 2, 8, 3, 0],
+      endTime: [2021, 2, 31, 3, 0],
       participants: [1,2],
       value: 20
     },
@@ -123,7 +123,7 @@ function App() {
       name: 'Cyber Security',
       color: 'red',
       startTime: [2021, 2, 2, 3, 0],
-      endTime: [2021, 2, 10, 3, 0],
+      endTime: [2021, 2, 31, 3, 0],
       participants: [1,2],
       value: 10
     },

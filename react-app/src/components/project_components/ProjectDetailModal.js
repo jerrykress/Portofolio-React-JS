@@ -54,8 +54,19 @@ const ProjectDetailModal = (props) => {
 
                         <p className="text-s italic text-gray-500">{moment(props.modalProject.endTime).format('llll')}</p>
                     </div>
-
-                    <ProgressBar />
+                    
+                    <div className="mt-3">
+                        <ProgressBar 
+                            completedPercent={Math.round(props.tasks.filter(x => x.project===props.modalProject.id && !x.completed).map(x => x.weight).reduce((a, b) => a + b, 0) * (-100) + 100)} 
+                            pendingPercent={moment().isAfter(moment(props.modalProject.endTime))
+                                            ? 100
+                                            : moment().isBefore(moment(props.modalProject.startTime))
+                                                ? 0
+                                                : Math.round(moment().diff(moment(props.modalProject.startTime)) / moment(props.modalProject.endTime).diff(moment(props.modalProject.startTime))*100)
+                                            
+                            }
+                        />
+                    </div>
 
                     <p className="text-s mt-5 text-gray-500">{`Project Info Placeholder`}</p>
 
