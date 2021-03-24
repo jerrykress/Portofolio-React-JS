@@ -21,7 +21,7 @@ const ProjectProgressBar = (props) => {
             }
 
             {props.completedPercent === 100 && 
-                <div className="bg-clip-text font-bold text-transparent bg-gradient-to-l from-blue-300 to-green-400 select-none">
+                <div className="bg-clip-text text-transparent bg-gradient-to-l from-blue-300 to-green-400 select-none">
                     Completed
                 </div>
             }

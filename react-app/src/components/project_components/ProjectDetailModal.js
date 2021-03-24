@@ -4,6 +4,7 @@ import moment from 'moment'
 
 import RenameButton from './../task_components/ModalRenameButton'
 import ProgressBar from './ProjectProgressBar'
+import TaskItem from './ProjectTaskItem'
 
 
 const ProjectDetailModal = (props) => {
@@ -34,7 +35,7 @@ const ProjectDetailModal = (props) => {
                 <div className="py-4 text-left px-6 mt-3">
 
                     {/* <!--Title--> */}
-                    <div className="flex justify-between items-center pb-2 mt-3">
+                    <div className="flex justify-between items-center pb-3 mt-3">
                         {isRenameActive
                             ? 
                             <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-gray-600 text-2xl border border-red rounded py-0 px-2 mr-3 transition-colors duration-300 hover:border-gray-400" type='text' value={renamedTitle} onChange={(e) => setRenamedTitle(e.target.value)}/>
@@ -68,7 +69,11 @@ const ProjectDetailModal = (props) => {
                         />
                     </div>
 
-                    <p className="text-s mt-5 text-gray-500">{`Project Info Placeholder`}</p>
+                    <div className="mt-5 -mx-1">
+                        {props.tasks.filter(x => x.project===props.modalProject.id).map(task => 
+                            <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false}/>
+                        )}
+                    </div>
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">

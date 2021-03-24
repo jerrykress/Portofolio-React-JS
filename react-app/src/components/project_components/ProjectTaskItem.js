@@ -12,8 +12,12 @@ const ProjectTaskItem = (props) => {
             </div>
 
             <div className="flex items-center ml-3">
-                <div className="items-center text-gray-600 truncate mr-3">Weight: {props.item.weight}</div>
-                <div className="items-center text-gray-600 truncate">Value: {props.parentProject.value * props.item.weight}</div>
+                {props.showWeight &&
+                    <div className="items-center text-gray-600 truncate mr-3">Weight: {props.item.weight}</div>
+                }
+                {props.showValue &&
+                    <div className="items-center text-gray-600 truncate">Value: {props.parentProject.value * props.item.weight}</div>
+                }
             </div>
 
 
@@ -22,3 +26,8 @@ const ProjectTaskItem = (props) => {
 }
 
 export default ProjectTaskItem
+
+ProjectTaskItem.defaultProps = { 
+    showWeight: true,
+    showValue: true, 
+}
