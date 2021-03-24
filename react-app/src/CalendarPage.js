@@ -25,6 +25,7 @@ function CalendarPage({tasks, setTasks, projects, setProjects}) {
 
   const selectToday = () => {
     setSelectedDate(moment())
+    setCurrentMonth(moment())
   }
 
   return (
@@ -32,8 +33,6 @@ function CalendarPage({tasks, setTasks, projects, setProjects}) {
         <div className="bg-white shadow-md rounded px-8 pt-1 pb-2 mb-0 my-2">
 
           <div className="text-gray-600 flex items-center justify-center select-none">
-
-            
 
 
             <button className="inline-flex items-center justify-center w-10 h-10 transition-colors duration-300 bg-white rounded-full focus:outline-none hover:bg-gray-200" onClick={increaseCellHeight}>
