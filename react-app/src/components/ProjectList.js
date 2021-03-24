@@ -7,7 +7,7 @@ const ProjectList = (props) => {
     return (
         <div className="mx-10">
             {props.projects.map(project => (
-                <ProjectItem key={project.id} item={project} tasks={props.tasks} featuredAttr={props.featuredAttr} setFeaturedAttr={props.setFeaturedAttr} invokeModal={props.invokeModal}/>
+                <ProjectItem key={project.id} item={project} tasks={props.tasks} featuredAttr={props.featuredAttr} setFeaturedAttr={props.setFeaturedAttr} invokeModal={props.invokeModal} forceRefreshTasks={props.forceRefreshTasks}/>
             ))}
         </div>
     )

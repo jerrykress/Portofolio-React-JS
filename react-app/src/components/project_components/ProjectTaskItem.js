@@ -7,7 +7,12 @@ const ProjectTaskItem = (props) => {
 
     const disOwnTask = (t) => {
         props.item.project = 1
-        props.refresh()
+        props.forceRefreshTasks()
+    }
+
+    const completeTask = (t) => {
+        props.item.completed = true
+        props.forceRefreshTasks()
     }
 
     return (
@@ -16,6 +21,7 @@ const ProjectTaskItem = (props) => {
             <div className="flex items-center">
                 <div className={`w-1 h-4 mt-0 mr-2 bg-${levelColors[props.item.priority]}-600 rounded-full`}></div>
                 <div className="items-center text-gray-600 truncate">{props.item.text}</div>
+                {props.showCompleteBtn && hovered && <CompleteTaskBtn onClick={completeTask} task={props.item} />}
             </div>
 
             <div className="flex items-center ml-3">
@@ -39,6 +45,7 @@ ProjectTaskItem.defaultProps = {
     showWeight: true,
     showValue: true, 
     showDisownBtn: false,
+    showCompleteBtn: false,
 }
 
 const DisOwnTaskBtn = (props) => {
@@ -48,6 +55,20 @@ const DisOwnTaskBtn = (props) => {
             
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+
+        </button>
+    )
+}
+
+
+const CompleteTaskBtn = (props) => {
+    return (
+        <button className={`inline-flex items-center justify-center ml-2 transition-colors duration-300  opacity-50 ${props.task.completed && "pointer-events-none"} focus:outline-none text-gray-400 hover:opacity-100 hover:text-green-500`}
+        onClick={() => props.onClick(props.task)}>
+            
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
 
         </button>

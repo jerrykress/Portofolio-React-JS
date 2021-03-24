@@ -12,7 +12,7 @@ import SelectFeaturedAttrBtn from './components/project_components/SelectFeature
 
 import ProjectDetailModal from './components/project_components/ProjectDetailModal'
 
-function ProjectPage({tasks, setTasks, projects, setProjects}) {
+function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}) {
     const [featuredAttr, setFeaturedAttr] = useState(0)
     /*
       0 - value
@@ -41,7 +41,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects}) {
 
         {modalPresented &&
           <div>
-            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setModalPresented}/>
+            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setModalPresented} forceRefreshTasks={forceRefreshTasks}/>
           </div>
 
         }
@@ -57,7 +57,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects}) {
           </div>
         </div>
         
-        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setModalPresented}/>
+        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setModalPresented} forceRefreshTasks={forceRefreshTasks}/>
         
       </div>
     )

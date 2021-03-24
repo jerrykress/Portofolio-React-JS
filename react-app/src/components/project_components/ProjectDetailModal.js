@@ -24,10 +24,6 @@ const ProjectDetailModal = (props) => {
         props.modalProject.name = renamedTitle
         props.setModalPresented(false)
     }
-
-    const refreshGlobalTasks = () => {
-        props.setTasks([...props.tasks])
-    }
     
     return (
         <div className="z-40 fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -75,7 +71,7 @@ const ProjectDetailModal = (props) => {
 
                     <div className="mt-5 -mx-1">
                         {props.tasks.filter(x => x.project===props.modalProject.id).map(task => 
-                            <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} refresh={refreshGlobalTasks}/>
+                            <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} forceRefreshTasks={props.forceRefreshTasks}/>
                         )}
                     </div>
 
