@@ -67,7 +67,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}
         <AddProjectForm globalProjects={projects} setProjects={setProjects}/>
 
         <div className="flex mt-10 mx-12 justify-between">
-          <p className="text-gray-700 text-3xl">All Projects</p>
+          <p className="text-gray-700 text-3xl mx-4 mb-6">All Projects</p>
           <div className="flex gap-3 mr-2 z-30">
             <SelectFeaturedAttrBtn setFeaturedAttr={setFeaturedAttr} />
             <SortTaskButton tasks={tasks} setTasks={setTasks} buttonText="Sort Tasks"/>
