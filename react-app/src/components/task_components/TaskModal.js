@@ -24,7 +24,7 @@ const DialogModal = (props) => {
     const saveChanges = () => {
         console.log("Close task modal and discard changes")
         props.modalTask.text = renamedTitle
-        props.modalTask.weight = newWeight
+        props.modalTask.weight = parseFloat(newWeight)
         props.modalTask.notes = newNotes
         props.setModalPresented(false)
     }
