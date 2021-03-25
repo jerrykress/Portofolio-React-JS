@@ -3,6 +3,7 @@ import { useState } from 'react'
 import moment from 'moment'
 
 import RenameButton from './ModalRenameButton'
+import ParseField from './../DateParseInputField'
 
 const DialogModal = (props) => {
     const levels = ["LOW", "MED", "HIGH"]
@@ -10,15 +11,21 @@ const DialogModal = (props) => {
 
     const [isRenameActive, setIsRenameActive] = useState(false)
     const [renamedTitle, setRenamedTitle] = useState(props.modalTask.text)
+    const [newNotes, setNewNotes] = useState(props.modalTask.notes)
+    const [newWeight, setNewWeight] = useState(props.modalTask.weight)
+    const [dayDisplay, setDayDisplay] = useState('Date')
+    const [momentArr, setMomentArr] = useState(moment(props.modalTask.day))
 
     const closeSelf = () => {
         console.log("Close task modal and save changes")
         props.setModalPresented(false)
     }
 
-    const saveRename = () => {
+    const saveChanges = () => {
         console.log("Close task modal and discard changes")
         props.modalTask.text = renamedTitle
+        props.modalTask.weight = newWeight
+        props.modalTask.notes = newNotes
         props.setModalPresented(false)
     }
     
@@ -50,17 +57,37 @@ const DialogModal = (props) => {
                         <RenameButton isActive={isRenameActive} setIsActive={setIsRenameActive}/>
                     </div>
 
-                    {/* <!--Body--> */}
-                    <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.day).format('llll')}</p>
+                    {/* <!--Date--> */}
+                    {isRenameActive ? <ParseField setDisplayed={setDayDisplay} setMomentArr={setMomentArr} />
+                                    : <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.day).format('llll')}</p>
+                    }
+                    
+                    
+                    {/* Task Weight  */}
+                    {isRenameActive
+                            ? <div className="">
+                                <p className="ml-0 mb-1 text-xs text-gray-600 uppercase">{`Weight: ${newWeight * 100}%`}</p>
+                                <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-gray-500 text-a border border-red rounded py-0 px-2 mr-3 mb-4 transition-colors duration-300 hover:border-gray-400" type='text' value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Task Weight"/>
+                              </div>
+                            : <div>
+                                <p className="text-s mt-5 text-gray-500">{`Task weight: ${props.modalTask.weight}`}</p>
+                                <p className="text-s mb-5 text-gray-500">{`Actual value: ${props.modalTask.weight * props.projects.filter(x => x.id===props.modalTask.project)[0].value}`}</p>
+                            </div>
+                    }
 
-                    <p className="text-s mt-5 text-gray-500">{`Task weight: ${props.modalTask.weight}`}</p>
-                    <p className="text-s mb-5 text-gray-500">{`Actual value: ${props.modalTask.weight * props.projects.filter(x => x.id===props.modalTask.project)[0].value}`}</p>
-                    <p className="text-s mb-5 text-gray-500">{props.modalTask.notes}</p>
+                    
+
+                    {isRenameActive 
+                            ? <textarea className="appearance-none w-full h-40 resize-y bg-grey-lighter focus:outline-none text-gray-500 text-s border border-red rounded py-0 px-2 mr-3 transition-colors duration-300 hover:border-gray-400" type='text' value={newNotes} onChange={(e) => setNewNotes(e.target.value)}/>
+                            : <p className="text-s mb-5 text-gray-500">{props.modalTask.notes}</p>            
+                    }
+                    
+                    
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">
                         <button className="px-4 bg-transparent p-2 rounded-lg focus:outline-none text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" onClick={closeSelf}>Cancel</button>
-                        <button className="px-4 bg-indigo-500 p-2 rounded-lg focus:outline-none text-white hover:bg-indigo-400" onClick={saveRename}>Save</button>
+                        <button className="px-4 bg-indigo-500 p-2 rounded-lg focus:outline-none text-white hover:bg-indigo-400" onClick={saveChanges}>Save</button>
                     </div>
                     
                 </div>

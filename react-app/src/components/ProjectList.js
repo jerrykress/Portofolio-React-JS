@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import moment from 'moment'
 
 import ProjectItem from './project_components/ProjectItem'
 

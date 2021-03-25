@@ -8,8 +8,6 @@ import TaskItem from './ProjectTaskItem'
 
 
 const ProjectDetailModal = (props) => {
-    const levels = ["LOW", "MED", "HIGH"]
-    const levelColors = ["green", "yellow", "red"]
 
     const [isRenameActive, setIsRenameActive] = useState(false)
     const [renamedTitle, setRenamedTitle] = useState(props.modalProject.name)
