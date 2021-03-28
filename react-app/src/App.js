@@ -136,7 +136,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={LoginPage} />
+        <Route path="/" exact render={(props) => (<LoginPage {...props} setAuthToken={setAuthToken}/>)} />
         <Route path="/app" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
       </Switch>
     </Router>

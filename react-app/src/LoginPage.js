@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import './index.css';
 import './App.css';
@@ -8,7 +8,7 @@ import logo from './logo.svg';
 
 import LoginButton from './components/login_components/LoginButton'
 
-function LoginPage() {
+function LoginPage({setAuthToken}) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -46,9 +46,7 @@ function LoginPage() {
           </div>
 
           <div className="text-sm">
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-              Forgot your password?
-            </a>
+            <Link to="/app/calendar" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={() => setAuthToken(true)}>Forgot your password?</Link>
           </div>
         </div>
 
