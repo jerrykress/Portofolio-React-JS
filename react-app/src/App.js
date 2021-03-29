@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 import './index.css';
 import './App.css';
@@ -129,18 +130,16 @@ function App() {
     },
   ])
 
-  if(!authToken){
-    return <LoginPage />
-  }
-
   return (
     <Router>
       <Switch>
         <Route path="/" exact render={(props) => (<LoginPage {...props} setAuthToken={setAuthToken}/>)} />
         <Route path="/app" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+        <AmplifySignOut />
       </Switch>
     </Router>
   );
 }
 
-export default App;
+
+export default withAuthenticator(App);
