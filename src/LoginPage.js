@@ -46,7 +46,7 @@ function LoginPage({setAuthToken}) {
           </div>
 
           <div className="text-sm">
-            <Link to="/app/calendar" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={() => setAuthToken(true)}>Forgot your password?</Link>
+            <Link to="/app/calendar" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</Link>
           </div>
         </div>
 

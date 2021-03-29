@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { AmplifyAuthenticator, AmplifySignIn, withAuthenticator } from '@aws-amplify/ui-react'
 
 import './index.css';
 import './App.css';
@@ -9,8 +9,6 @@ import LoginPage from './LoginPage'
 import UserApp from './UserApp'
 
 function App() {
-  // User Auth
-  const [authToken, setAuthToken] = useState(true)
 
   // Global State
   const [tasks, setTasks] = useState([
@@ -132,14 +130,16 @@ function App() {
   ])
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact render={(props) => (<LoginPage {...props} setAuthToken={setAuthToken}/>)} />
-        <Route path="/app" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
-      </Switch>
-    </Router>
+    <AmplifyAuthenticator>
+      <Router>
+        <Switch>
+          <Route path="/" exact render={(props) => (<LoginPage {...props} />)} />
+          <Route path="/app" render={(props) => (<UserApp {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)} />
+        </Switch>
+      </Router>
+    </AmplifyAuthenticator>
   );
 }
 
 
-export default withAuthenticator(App);
+export default App;
