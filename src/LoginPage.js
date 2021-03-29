@@ -28,19 +28,19 @@ function LoginPage({setAuthToken}) {
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
-            <label for="email-address" className="sr-only">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-300 text-gray-900 text-center rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+            <label htmlFor="email-address" className="sr-only">Email address</label>
+            <input id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-300 text-gray-900 text-center rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
           </div>
           <div>
-            <label for="password" className="sr-only">Password</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-300 text-gray-900 text-center rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+            <label htmlFor="password" className="sr-only">Password</label>
+            <input id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-300 text-gray-900 text-center rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
           </div>
         </div>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <input id="remember_me" name="remember_me" type="checkbox" className="h-4 w-4 text-indigo-600 text-center focus:ring-indigo-500 border-gray-300 rounded" />
-            <label for="remember_me" className="ml-2 block text-sm text-gray-900">
+            <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
               Remember me
             </label>
           </div>

@@ -32,7 +32,7 @@ const DefaultProject = (props) => {
         <div className="flex flex-wrap relative content-between h-auto m-4 mb-6 bg-white border-dashed border-2 border-gray-300 transition-colors duration-1000 p-6 rounded-md">
             <h3 className="text-gray-300 text-3xl mb-4">Default Project</h3>
             {props.tasks.filter(x => x.project===1).map(task=>
-                <div className={`flex items-center justify-between truncate select-none mb-1 w-full px-2 py-1 rounded-full transition-colors duration-500 hover:bg-gray-100 ${task.completed && "opacity-40 line-through"}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+                <div key={task.id} className={`flex items-center justify-between truncate select-none mb-1 w-full px-2 py-1 rounded-full transition-colors duration-500 hover:bg-gray-100 ${task.completed && "opacity-40 line-through"}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
 
                     <div className="flex items-center">
                         <div className={`w-1 h-4 mt-0 mr-2 bg-${levelColors[task.priority]}-600 rounded-full`}></div>

@@ -11,6 +11,7 @@ import UserApp from './UserApp'
 function App() {
   // User Auth
   const [authToken, setAuthToken] = useState(true)
+
   // Global State
   const [tasks, setTasks] = useState([
       {
