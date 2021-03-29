@@ -1,0 +1,12 @@
+type Tasks @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  text: String
+  notes: String
+  day: String
+  reminder: Boolean
+  priority: Int
+  completed: Boolean
+  project: Int
+  weight: Float
+  participants: String
+}
