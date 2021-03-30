@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { AmplifyAuthenticator, AmplifySignIn, withAuthenticator } from '@aws-amplify/ui-react'
+import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react'
 
 import './index.css';
 import './App.css';
