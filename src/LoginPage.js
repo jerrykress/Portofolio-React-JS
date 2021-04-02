@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import './index.css';
 import './App.css';
-import logo from './logo.svg';
 
 import LoginButton from './components/login_components/LoginButton'
 

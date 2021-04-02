@@ -82,16 +82,3 @@ function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}
 }
 
 export default ProjectPage;
-
-
-/*
-Project:
-id
-name
-abbr
-color
-start time
-end time (target)
-participants
-importance score
-*/

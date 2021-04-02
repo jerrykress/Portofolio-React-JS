@@ -12,6 +12,7 @@ const Nav = () => {
         const fetchUser = async () => {
             const { attributes } = await Auth.currentAuthenticatedUser();
             console.log(attributes)
+            console.log(attributes.sub)
             setUsername(attributes.preferred_username)
         }
         fetchUser()

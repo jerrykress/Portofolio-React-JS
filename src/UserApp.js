@@ -1,5 +1,6 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Auth, API } from 'aws-amplify';
 
 import './index.css';
 import './App.css';
@@ -9,7 +10,142 @@ import TaskPage from './TaskPage'
 import ProjectPage from './ProjectPage';
 import CalendarPage from './CalendarPage'
 
-function UserApp({tasks, setTasks, projects, setProjects}) {
+import { DataStore } from '@aws-amplify/datastore';
+import { Project, Task } from './models';
+
+function UserApp() {
+    useEffect(() => {
+      fetchProjects()
+    })
+
+    async function fetchProjects() {
+      const apiData = await DataStore.query(Project);
+      console.log("Fetching Projects", apiData)
+    }
+
+    async function fetchTasks() {
+      const apiData = await DataStore.query(Task);
+      console.log("Fetching Tasks", apiData)
+    }
+    
+    const [tasks, setTasks] = useState([
+      {
+          id: 1,
+          text: 'Meeting with team 1',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 23, 7, 0],
+          reminder: false,
+          priority: 0,
+          completed: false,
+          project: 1,
+          weight: 0.5,
+          participants: [1,2]
+      },
+      {
+          id: 2,
+          text: 'Assessed Lab Exercise',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 20, 7, 0],
+          reminder: true,
+          priority: 1,
+          completed: false,
+          project: 2,
+          weight: 0.7,
+          participants: [1,2]
+      },
+      {
+          id: 3,
+          text: 'Read lecture material',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 10, 7, 0],
+          reminder: false,
+          priority: 0,
+          completed: true,
+          project: 2,
+          weight: 0.1,
+          participants: [1,2]
+      },
+      {
+          id: 4,
+          text: 'Worksheet Exercises',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 10, 14, 0],
+          reminder: true,
+          priority: 2,
+          completed: false,
+          project: 3,
+          weight: 0.2,
+          participants: [1,2]
+      },
+      {
+          id: 5,
+          text: 'Meeting with team 5',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 2, 3, 0],
+          reminder: false,
+          priority: 2,
+          completed: false,
+          project: 3,
+          weight: 0.2,
+          participants: [1,2]
+      },
+      {
+          id: 6,
+          text: 'Group essay final draft',
+          notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          day: [2021, 2, 1, 17, 0],
+          reminder: false,
+          priority: 1,
+          completed: true,
+          project: 4,
+          weight: 0.8,
+          participants: [1,2]
+      },
+    ])
+
+    const [projects, setProjects] = useState([
+    {
+      id: 1,
+      abbr: 'None',
+      name: 'Default',
+      color: 'gray',
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 3, 3, 0],
+      participants: [1,2],
+      value: 15
+    },
+    {
+      id: 2,
+      abbr: 'IDSS',
+      name: 'Data Science',
+      color: 'yellow',
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 5, 3, 0],
+      participants: [1,2],
+      value: 10
+    },
+    {
+      id: 3,
+      abbr: 'ML',
+      name: 'Machine Learning',
+      color: 'blue',
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 31, 3, 0],
+      participants: [1,2],
+      value: 20
+    },
+    {
+      id: 4,
+      abbr: 'ECS',
+      name: 'Cyber Security',
+      color: 'red',
+      startTime: [2021, 2, 2, 3, 0],
+      endTime: [2021, 2, 31, 3, 0],
+      participants: [1,2],
+      value: 10
+    },
+    ])
+
     const refreshGlobalTasks = () => {
         setTasks([...tasks])
     }

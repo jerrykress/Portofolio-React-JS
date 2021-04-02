@@ -1,9 +1,12 @@
-import React from 'react'
 import { useState } from 'react'
 import moment from 'moment'
+import { API, Auth } from 'aws-amplify';
 
 import ParseField from './DateParseInputField'
 import AddProjectButton from './project_components/AddProjectButton'
+
+import { DataStore } from '@aws-amplify/datastore';
+import { Project } from './../models';
 
 const AddProjectForm = (props) => {
     const [name, setName] = useState('')
@@ -18,6 +21,34 @@ const AddProjectForm = (props) => {
 
     const [participants, setParticipants] = useState('')
     const [value, setValue] = useState(0)
+
+    const fetchUser = async () => {
+        const { attributes } = await Auth.currentAuthenticatedUser();
+        return toString(attributes.sub)
+    }
+
+    async function createProject(e) {
+        e.preventDefault()
+        // name check
+        if(!name){
+            alert("Project title can not be empty.")
+            return
+        }
+        // get project components
+        const owner = fetchUser()
+        await DataStore.save(
+        new Project({
+            "abbreviation": abbr,
+            "name": name,
+            "color": color,
+            "startTime":  startMomentArr,
+            "endTime":  endMomentArr,
+            "participants": [],
+            "value": parseInt(value),
+            "tasks": []
+        })
+);
+    }
     
     const handleTitleInput = (s) => {
         console.log("Updating title:", s)
@@ -77,7 +108,7 @@ const AddProjectForm = (props) => {
 
                 <div className="form-control col-span-3">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>
-                    <AddProjectButton className="form-control" text='Add Task' onClick={addProject}/>
+                    <AddProjectButton className="form-control" text='Add Task' onClick={createProject}/>
                 </div>
             </div>
         </div>

@@ -1,0 +1,27 @@
+type Project @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  abbreviation: String!
+  name: String!
+  color: String!
+  startTime: [Int]!
+  endTime: [Int]!
+  participants: [String]
+  value: Float!
+  tasks: [Task] @connection(keyName: "byProject", fields: ["id"])
+}
+
+type Task
+  @model
+  @key(name: "byProject", fields: ["projectID"])
+  @auth(rules: [{ allow: private }]) {
+  id: ID!
+  projectID: ID!
+  title: String!
+  text: String!
+  time: [Int]!
+  reminder: Boolean!
+  priority: Int!
+  completed: Boolean!
+  weight: Float!
+  participants: [String]
+}
