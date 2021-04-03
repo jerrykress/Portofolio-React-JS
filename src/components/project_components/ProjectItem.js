@@ -29,8 +29,8 @@ const ProjectItem = (props) => {
                     }
                 </h3>
 
-                {props.tasks.filter(x => x.project===props.item.id).length!==0
-                    ? props.tasks.filter(x => x.project===props.item.id).map(task => (
+                {props.item.tasks.items.length!==0
+                    ? props.item.tasks.items.map(task => (
                       <div key={task.id} className="">
                         <ProjectTaskItem item={task} parentProject={props.item} showCompleteBtn={true} forceRefreshTasks={props.forceRefreshTasks}/>
                       </div> ))

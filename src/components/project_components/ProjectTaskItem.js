@@ -19,7 +19,7 @@ const ProjectTaskItem = (props) => {
 
             <div className="flex items-center">
                 <div className={`w-1 h-4 mt-0 mr-2 bg-${levelColors[props.item.priority]}-600 rounded-full`}></div>
-                <div className="items-center text-gray-600 truncate">{props.item.text}</div>
+                <div className="items-center text-gray-600 truncate">{props.item.title}</div>
                 {props.showCompleteBtn && hovered && <CompleteTaskBtn onClick={completeTask} task={props.item} />}
             </div>
 

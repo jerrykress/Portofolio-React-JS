@@ -1,4 +1,4 @@
-type Project @model @auth(rules: [{ allow: private }]) {
+type Project @model @auth(rules: [{allow: owner, operations: [read, create, update, delete]}]) {
   id: ID!
   accountID: ID
   abbr: String!
@@ -11,13 +11,10 @@ type Project @model @auth(rules: [{ allow: private }]) {
   tasks: [Task] @connection(keyName: "byProject", fields: ["id"])
 }
 
-type Task
-  @model
-  @key(name: "byProject", fields: ["projectID"])
-  @auth(rules: [{ allow: private }]) {
+type Task @model @key(name: "byProject", fields: ["projectID"]) @auth(rules: [{allow: owner, operations: [read, create, update, delete]}]) {
   id: ID!
-  projectID: ID!
-  project: Project @connection(fields: ["projectID"])
+  projectID: ID
+  project: Project @connection
   title: String!
   text: String!
   time: [Int]!
@@ -27,3 +24,4 @@ type Task
   weight: Float!
   participants: [String]
 }
+ 

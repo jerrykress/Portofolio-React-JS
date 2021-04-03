@@ -21,6 +21,7 @@ export declare class Project {
 
 export declare class Task {
   readonly id: string;
+  readonly projectID?: string;
   readonly project?: Project;
   readonly title: string;
   readonly text: string;

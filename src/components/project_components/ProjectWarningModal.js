@@ -27,7 +27,7 @@ const ProjectWarningModal = (props) => {
                     </div>
 
                     {/* <!--Body--> */}
-                    <p className="mb-5 mt-2 text-s text-gray-500">{`Are you sure you want to drop "${props.modalTask.text}" from the project?`}</p>
+                    <p className="mb-5 mt-2 text-s text-gray-500">{`Are you sure you want to drop "${props.modalTask.title}" from the project?`}</p>
 
                     {/* <!--Footer--> */}
                     <div className="flex justify-end pt-2 pb-0">

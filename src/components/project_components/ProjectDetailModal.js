@@ -56,7 +56,7 @@ const ProjectDetailModal = (props) => {
                     
                     <div className="mt-3">
                         <ProgressBar 
-                            completedPercent={Math.round(props.tasks.filter(x => x.project===props.modalProject.id && !x.completed).map(x => x.weight).reduce((a, b) => a + b, 0) * (-100) + 100)} 
+                            completedPercent={Math.round(props.modalProject.tasks.items.filter(x => !x.completed).map(x => x.weight).reduce((a, b) => a + b, 0) * (-100) + 100)} 
                             pendingPercent={moment().isAfter(moment(props.modalProject.endTime))
                                             ? 100
                                             : moment().isBefore(moment(props.modalProject.startTime))
@@ -68,7 +68,7 @@ const ProjectDetailModal = (props) => {
                     </div>
 
                     <div className="mt-5 -mx-1">
-                        {props.tasks.filter(x => x.project===props.modalProject.id).map(task => 
+                        {props.modalProject.tasks.items.map(task => 
                             <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} forceRefreshTasks={props.forceRefreshTasks} invokeModal={props.invokeModal}/>
                         )}
                     </div>

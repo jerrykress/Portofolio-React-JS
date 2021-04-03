@@ -80,7 +80,7 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "project"
+                        "associatedWith": "projectID"
                     }
                 }
             },
@@ -96,13 +96,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
                                 "operations": [
+                                    "read",
                                     "create",
                                     "update",
-                                    "delete",
-                                    "read"
-                                ]
+                                    "delete"
+                                ],
+                                "identityClaim": "cognito:username"
                             }
                         ]
                     }
@@ -119,6 +122,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "projectID": {
+                    "name": "projectID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "project": {
                     "name": "project",
                     "isArray": false,
@@ -129,7 +139,7 @@ export const schema = {
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "projectID"
+                        "targetName": "taskProjectId"
                     }
                 },
                 "title": {
@@ -212,13 +222,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
                                 "operations": [
+                                    "read",
                                     "create",
                                     "update",
-                                    "delete",
-                                    "read"
-                                ]
+                                    "delete"
+                                ],
+                                "identityClaim": "cognito:username"
                             }
                         ]
                     }
@@ -228,5 +241,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "ffe655639f4dc82643094ba35cb725c0"
+    "version": "ea093a5cadbf2861030eff16debaac5e"
 };

@@ -12,6 +12,7 @@ import CalendarPage from './CalendarPage'
 
 import { DataStore } from '@aws-amplify/datastore';
 import { Project, Task } from './models';
+import { listProjects } from './graphql/customQueries'
 
 function UserApp() {
     useEffect(() => {
@@ -23,9 +24,11 @@ function UserApp() {
         // console.log(attributes)
         setAccountID(attributes.sub)
         // console.log(attributes.sub)
-        const projectData = await DataStore.query(Project);
+        // const projectData = await DataStore.query(Project);
+        const projectData = await API.graphql({ query: listProjects })
         console.log("Fetching Projects", projectData)
-        setProjects(projectData)
+        // setProjects(projectData)
+        setProjects(projectData.data.listProjects.items)
         const taskData = await DataStore.query(Task);
         console.log("Fetching Tasks", taskData)
         setTasks(taskData)
