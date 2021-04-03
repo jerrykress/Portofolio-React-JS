@@ -8,7 +8,8 @@ export const createProject = /* GraphQL */ `
   ) {
     createProject(input: $input, condition: $condition) {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -51,7 +52,8 @@ export const updateProject = /* GraphQL */ `
   ) {
     updateProject(input: $input, condition: $condition) {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -94,7 +96,8 @@ export const deleteProject = /* GraphQL */ `
   ) {
     deleteProject(input: $input, condition: $condition) {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -151,6 +154,26 @@ export const createTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -175,6 +198,26 @@ export const updateTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -199,6 +242,26 @@ export const deleteTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;

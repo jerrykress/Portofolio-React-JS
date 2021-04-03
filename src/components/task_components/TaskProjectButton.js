@@ -14,7 +14,7 @@ const TaskProjectButton = (props) => {
     }
 
     const setProjectHandler = (p) => {
-        console.log("Setting task project:", p.name)
+        console.log("Setting task project:", p.name, p)
         setSelectedProject(p.name)
         props.setTaskProject(p.id)
         hideDropdown()

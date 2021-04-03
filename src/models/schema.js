@@ -10,8 +10,15 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "abbreviation": {
-                    "name": "abbreviation",
+                "accountID": {
+                    "name": "accountID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "abbr": {
+                    "name": "abbr",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
@@ -73,7 +80,7 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "projectID"
+                        "associatedWith": "project"
                     }
                 }
             },
@@ -112,12 +119,18 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "projectID": {
-                    "name": "projectID",
+                "project": {
+                    "name": "project",
                     "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
+                    "type": {
+                        "model": "Project"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "projectID"
+                    }
                 },
                 "title": {
                     "name": "title",
@@ -215,5 +228,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "5cd19ffb992e32d09b51f67cdfa714fb"
+    "version": "ffe655639f4dc82643094ba35cb725c0"
 };

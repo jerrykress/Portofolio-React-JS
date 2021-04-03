@@ -1,11 +1,44 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const listProjects = /* GraphQL */ `
+  query ListProjects(
+    $filter: ModelProjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getProject = /* GraphQL */ `
   query GetProject($id: ID!) {
     getProject(id: $id) {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -41,37 +74,6 @@ export const getProject = /* GraphQL */ `
     }
   }
 `;
-export const listProjects = /* GraphQL */ `
-  query ListProjects(
-    $filter: ModelProjectFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        abbreviation
-        name
-        color
-        startTime
-        endTime
-        participants
-        value
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        tasks {
-          nextToken
-          startedAt
-        }
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const syncProjects = /* GraphQL */ `
   query SyncProjects(
     $filter: ModelProjectFilterInput
@@ -87,7 +89,8 @@ export const syncProjects = /* GraphQL */ `
     ) {
       items {
         id
-        abbreviation
+        accountID
+        abbr
         name
         color
         startTime
@@ -127,6 +130,26 @@ export const getTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -153,6 +176,22 @@ export const listTasks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        project {
+          id
+          accountID
+          abbr
+          name
+          color
+          startTime
+          endTime
+          participants
+          value
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -188,6 +227,22 @@ export const syncTasks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        project {
+          id
+          accountID
+          abbr
+          name
+          color
+          startTime
+          endTime
+          participants
+          value
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt

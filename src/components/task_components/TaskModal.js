@@ -10,11 +10,11 @@ const DialogModal = (props) => {
     const levelColors = ["green", "yellow", "red"]
 
     const [isRenameActive, setIsRenameActive] = useState(false)
-    const [renamedTitle, setRenamedTitle] = useState(props.modalTask.text)
-    const [newNotes, setNewNotes] = useState(props.modalTask.notes)
+    const [renamedTitle, setRenamedTitle] = useState(props.modalTask.title)
+    const [newNotes, setNewNotes] = useState(props.modalTask.text)
     const [newWeight, setNewWeight] = useState(props.modalTask.weight)
     const [dayDisplay, setDayDisplay] = useState('Date')
-    const [momentArr, setMomentArr] = useState(moment(props.modalTask.day))
+    const [momentArr, setMomentArr] = useState(moment(props.modalTask.time))
 
     const closeSelf = () => {
         console.log("Close task modal and save changes")
@@ -43,7 +43,7 @@ const DialogModal = (props) => {
                             {levels[props.modalTask.priority]}
                         </span>
 
-                        <p className={`text-s uppercase ml-2 text-${levelColors[props.modalTask.priority]}-500`}>{`${props.projects.filter(x => x.id===props.modalTask.project)[0].name}`}</p>
+                        <p className={`text-s uppercase ml-2 text-${levelColors[props.modalTask.priority]}-500`}>{`${props.projects.filter(x => x.id===props.modalTask.project.id)[0].name}`}</p>
                     </div>
 
                     {/* <!--Title--> */}
@@ -52,14 +52,14 @@ const DialogModal = (props) => {
                             ? 
                             <input className="appearance-none w-full bg-grey-lighter focus:outline-none text-gray-600 text-2xl border border-red rounded py-0 px-2 mr-3 transition-colors duration-300 hover:border-gray-400" type='text' value={renamedTitle} onChange={(e) => setRenamedTitle(e.target.value)}/>
                             :
-                            <p className="text-gray-700 text-3xl">{props.modalTask.text}</p>
+                            <p className="text-gray-700 text-3xl">{props.modalTask.title}</p>
                         }
                         <RenameButton isActive={isRenameActive} setIsActive={setIsRenameActive}/>
                     </div>
 
                     {/* <!--Date--> */}
                     {isRenameActive ? <ParseField setDisplayed={setDayDisplay} setMomentArr={setMomentArr} />
-                                    : <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.day).format('llll')}</p>
+                                    : <p className="mb-5 mt-1 text-s italic text-gray-500">{moment(props.modalTask.time).format('llll')}</p>
                     }
                     
                     
@@ -71,7 +71,7 @@ const DialogModal = (props) => {
                               </div>
                             : <div>
                                 <p className="text-s mt-5 text-gray-500">{`Task weight: ${props.modalTask.weight}`}</p>
-                                <p className="text-s mb-5 text-gray-500">{`Actual value: ${props.modalTask.weight * props.projects.filter(x => x.id===props.modalTask.project)[0].value}`}</p>
+                                <p className="text-s mb-5 text-gray-500">{`Actual value: ${props.modalTask.weight * props.projects.filter(x => x.id===props.modalTask.project.id)[0].value}`}</p>
                             </div>
                     }
 
@@ -79,7 +79,7 @@ const DialogModal = (props) => {
 
                     {isRenameActive 
                             ? <textarea className="appearance-none w-full h-40 resize-y bg-grey-lighter focus:outline-none text-gray-500 text-s border border-red rounded py-0 px-2 mr-3 transition-colors duration-300 hover:border-gray-400" type='text' value={newNotes} onChange={(e) => setNewNotes(e.target.value)}/>
-                            : <p className="text-s mb-5 text-gray-500">{props.modalTask.notes}</p>            
+                            : <p className="text-s mb-5 text-gray-500">{props.modalTask.text}</p>            
                     }
                     
                     

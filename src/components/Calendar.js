@@ -61,7 +61,7 @@ const Calendar = (props) => {
     while (day.isBefore(endDate)) {
       for (let i = 0; i < 7; i++) {
         const cloneDay = moment(day);
-        const dayTasks = props.tasks.filter(x => moment(x.day).isSame(cloneDay, 'day'))
+        const dayTasks = props.tasks.filter(x => moment(x.time).isSame(cloneDay, 'day'))
 
         days.push(
           <div

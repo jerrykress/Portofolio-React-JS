@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import moment from 'moment'
-import { API, Auth } from 'aws-amplify';
 
 import ParseField from './DateParseInputField'
 import AddProjectButton from './project_components/AddProjectButton'
@@ -22,53 +21,32 @@ const AddProjectForm = (props) => {
     const [participants, setParticipants] = useState('')
     const [value, setValue] = useState(0)
 
-    const fetchUser = async () => {
-        const { attributes } = await Auth.currentAuthenticatedUser();
-        return toString(attributes.sub)
-    }
+    async function createProject() {
 
-    async function createProject(e) {
-        e.preventDefault()
-        // name check
         if(!name){
             alert("Project title can not be empty.")
             return
         }
-        // get project components
-        const owner = fetchUser()
+
         await DataStore.save(
-        new Project({
-            "abbreviation": abbr,
-            "name": name,
-            "color": color,
-            "startTime":  startMomentArr,
-            "endTime":  endMomentArr,
-            "participants": [],
-            "value": parseInt(value),
-            "tasks": []
-        })
-);
+            new Project({
+                "accountID": props.accountId,
+                "abbr": abbr,
+                "name": name,
+                "color": color,
+                "startTime":  startMomentArr,
+                "endTime":  endMomentArr,
+                "participants": [],
+                "value": parseInt(value),
+                "tasks": []
+            })
+        ).then(response => response).catch(error => console.log(error.response.data))
     }
     
     const handleTitleInput = (s) => {
         console.log("Updating title:", s)
         setName(s)
         setAbbr(name.split(" ").map((n)=>n[0]).join("").toUpperCase())
-    }
-
-    const addProject = (e) => {
-        e.preventDefault()
-        // name check
-        if(!name){
-            alert("Project title can not be empty.")
-            return
-        }
-        // get project components
-        const id = Math.floor(Math.random() * 10000) + 1
-        const participants = [1,2]
-        const project = {id, abbr, name, color, startMomentArr, endMomentArr, participants, value}
-        // add project to global
-        props.setProjects([...props.globalProjects, project])
     }
 
 

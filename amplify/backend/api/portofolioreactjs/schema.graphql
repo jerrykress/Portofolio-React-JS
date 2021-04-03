@@ -1,6 +1,7 @@
 type Project @model @auth(rules: [{ allow: private }]) {
   id: ID!
-  abbreviation: String!
+  accountID: ID
+  abbr: String!
   name: String!
   color: String!
   startTime: [Int]!
@@ -16,6 +17,7 @@ type Task
   @auth(rules: [{ allow: private }]) {
   id: ID!
   projectID: ID!
+  project: Project @connection(fields: ["projectID"])
   title: String!
   text: String!
   time: [Int]!

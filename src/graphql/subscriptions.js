@@ -5,7 +5,8 @@ export const onCreateProject = /* GraphQL */ `
   subscription OnCreateProject {
     onCreateProject {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -45,7 +46,8 @@ export const onUpdateProject = /* GraphQL */ `
   subscription OnUpdateProject {
     onUpdateProject {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -85,7 +87,8 @@ export const onDeleteProject = /* GraphQL */ `
   subscription OnDeleteProject {
     onDeleteProject {
       id
-      abbreviation
+      accountID
+      abbr
       name
       color
       startTime
@@ -139,6 +142,26 @@ export const onCreateTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -160,6 +183,26 @@ export const onUpdateTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -181,6 +224,26 @@ export const onDeleteTask = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      project {
+        id
+        accountID
+        abbr
+        name
+        color
+        startTime
+        endTime
+        participants
+        value
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        tasks {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;

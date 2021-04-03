@@ -13,7 +13,7 @@ import SelectFeaturedAttrBtn from './components/project_components/SelectFeature
 import ProjectDetailModal from './components/project_components/ProjectDetailModal'
 import ProjectWarningModal from './components/project_components/ProjectWarningModal'
 
-function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}) {
+function ProjectPage({accountId, tasks, setTasks, projects, setProjects, forceRefreshTasks}) {
     const [featuredAttr, setFeaturedAttr] = useState(0)
     /*
       0 - value
@@ -64,7 +64,7 @@ function ProjectPage({tasks, setTasks, projects, setProjects, forceRefreshTasks}
           </div>
         }
 
-        <AddProjectForm globalProjects={projects} setProjects={setProjects}/>
+        <AddProjectForm accountId={accountId} globalProjects={projects} setProjects={setProjects}/>
 
         <div className="flex mt-10 mx-12 justify-between">
           <p className="text-gray-700 text-3xl mx-4 mb-6">All Projects</p>

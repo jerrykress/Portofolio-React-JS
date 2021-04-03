@@ -61,8 +61,8 @@ function CalendarPage({tasks, setTasks, projects, setProjects}) {
 
         <div className="px-2">
 
-          {tasks.filter(x => moment(x.day).isSame(selectedDate, 'day')).length!==0
-            ? tasks.filter(x => moment(x.day).isSame(selectedDate, 'day')).map(x => 
+          {tasks.filter(x => moment(x.time).isSame(selectedDate, 'day')).length!==0
+            ? tasks.filter(x => moment(x.time).isSame(selectedDate, 'day')).map(x => 
               <DayItem key={x.id} projects={projects} item={x} tasks={tasks} setTasks={setTasks}/>
             )
             : <div className="ml-6 text-gray-400"> No task due on this day </div>

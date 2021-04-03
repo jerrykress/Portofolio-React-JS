@@ -9,8 +9,8 @@ const CompletedItem = (props) => {
         <div className={`font-sans flex flex-wrap content-between h-auto m-4 bg-white border-2 border-gray-300 hover:border-gray-400 transition-colors duration-1000 p-6 rounded-md tracking-wide shadow-lg`} onDoubleClick={()=>props.onToggle(props.item.id)} >
             <div className="w-full">
 
-                <h3 className="text-l font-semibold subpixel-antialiased text-gray-400" key={props.item.id}>{props.item.text}</h3>
-                <p className="text-xs italic text-gray-400 mt-2">{moment(props.item.day).format('llll')}</p>
+                <h3 className="text-l font-semibold subpixel-antialiased text-gray-400" key={props.item.id}>{props.item.title}</h3>
+                <p className="text-xs italic text-gray-400 mt-2">{moment(props.item.time).format('llll')}</p>
             </div>
 
             <div className="mt-3 align-baseline -mb-2">

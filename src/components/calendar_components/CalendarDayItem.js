@@ -16,7 +16,7 @@ const CalendarDayItem = (props) => {
                 
                 <div className="flex justify-between items-center">
                     <div className="flex items-center">
-                        <div className={`text-gray-700 ml-2 text-xl -mt-1 ${props.item.completed && "opacity-40 line-through"}`}>{props.item.text}</div>
+                        <div className={`text-gray-700 ml-2 text-xl -mt-1 ${props.item.completed && "opacity-40 line-through"}`}>{props.item.title}</div>
                         <div className="-mt-4">
                             {props.item.completed
                                 ? <div></div>
@@ -26,7 +26,7 @@ const CalendarDayItem = (props) => {
                     </div>
                     
                     <div className="px-3 text-gray-400 uppercase text-sm items-center transition-colors duration-150 border border-gray-300 rounded-full">
-                        <div className="truncate">{props.projects.filter(x => x.id===props.item.project)[0].name}</div>
+                        <div className="truncate">{props.projects.filter(x => x.id===props.item.project.id)[0].name}</div>
                     </div>
                 </div>
 

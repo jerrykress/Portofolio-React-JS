@@ -8,6 +8,9 @@ import ParseField from './DateParseInputField'
 import ProjectSelector from './task_components/TaskProjectButton'
 import ReminderToggle from './task_components/TaskToggleReminderButton'
 
+import { DataStore } from '@aws-amplify/datastore';
+import { Task } from './../models';
+
 const AddTaskForm = (props) => {
     const [text, setText] = useState('')
     const [dayDisplay, setDayDisplay] = useState('Date')
@@ -18,8 +21,7 @@ const AddTaskForm = (props) => {
     const [notes, setNotes] = useState('')
     const [weight, setWeight] = useState(0)
 
-    const addTask = (e) => {
-        e.preventDefault()
+    async function createTask() {
         // if text is empty, abort
         if(!text){
             alert("Task title can not be empty.")
@@ -35,14 +37,21 @@ const AddTaskForm = (props) => {
             alert("Weight must be between 0 and 1.")
             return
         }
-        // construct task params
-        const id = Math.floor(Math.random() * 10000) + 1
-        const day = momentArr
-        const completed = false
-        const participants = [1,2]
-        // new task here
-        const task = {id, text, notes, day, reminder, priority, completed, project, weight, participants}
-        props.setTasks([...props.globalTasks, task])
+        const p = props.projects.filter(x => x.id===project)[0]
+        await DataStore.save(
+            new Task({
+                "projectID": project,
+                "project": p,
+                "title": text,
+                "text": notes,
+                "time":  momentArr,
+                "reminder": reminder,
+                "priority": priority,
+                "completed": false,
+                "weight": weight * 100 * 0.01,
+                "participants": []
+            })
+        );
         // clear form
         setText('')
         setDayDisplay('')
@@ -88,7 +97,7 @@ const AddTaskForm = (props) => {
                 
                 <div className="form-control col-span-1">
                     <label className="uppercase w-full text-grey-darker text-xs mb-3 text-white-500"> Add </label>
-                    <AddTaskButton className="form-control" text='Add Task' onClick={addTask}/>
+                    <AddTaskButton className="form-control" text='Add Task' onClick={createTask}/>
                 </div>
             </div>
         </div>

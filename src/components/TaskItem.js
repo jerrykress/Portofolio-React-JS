@@ -16,8 +16,8 @@ const TaskItem = (props) => {
                     {/* {levels[props.item.priority]} */}
                     {/* {props.item.project} */}
                 </span>
-                <h3 className="text-l font-semibold subpixel-antialiased" key={props.item.id}>{props.item.text}</h3>
-                <p className="text-xs italic text-gray-600 mt-2">{moment(props.item.day).format('llll')}</p>
+                <h3 className="text-l font-semibold subpixel-antialiased" key={props.item.id}>{props.item.title}</h3>
+                <p className="text-xs italic text-gray-600 mt-2">{moment(props.item.time).format('llll')}</p>
             </div>
 
             <div className="mt-3 align-baseline -mb-2">

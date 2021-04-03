@@ -2,6 +2,7 @@ import logo from './../logo.svg';
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Auth } from 'aws-amplify';
+import { DataStore } from '@aws-amplify/datastore';
 
 const Nav = () => {
     // displayed username
@@ -9,19 +10,21 @@ const Nav = () => {
 
     //fetch user information
     useEffect(() => {
-        const fetchUser = async () => {
-            const { attributes } = await Auth.currentAuthenticatedUser();
-            console.log(attributes)
-            console.log(attributes.sub)
-            setUsername(attributes.preferred_username)
-        }
         fetchUser()
-    })
+    }, [])
+
+    const fetchUser = async () => {
+        const { attributes } = await Auth.currentAuthenticatedUser();
+        console.log("User Info", attributes)
+        // console.log(attributes.sub)
+        setUsername(attributes.preferred_username)
+    }
 
     // logout
     async function signOut() {
         try {
             await Auth.signOut();
+            await DataStore.clear();
         } catch (error) {
             console.log('error signing out: ', error);
         }

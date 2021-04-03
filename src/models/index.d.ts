@@ -6,7 +6,8 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 export declare class Project {
   readonly id: string;
-  readonly abbreviation: string;
+  readonly accountID?: string;
+  readonly abbr: string;
   readonly name: string;
   readonly color: string;
   readonly startTime: (number | null)[];
@@ -20,7 +21,7 @@ export declare class Project {
 
 export declare class Task {
   readonly id: string;
-  readonly projectID: string;
+  readonly project?: Project;
   readonly title: string;
   readonly text: string;
   readonly time: (number | null)[];
