@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const TaskProjectButton = (props) => {
     const [showDrop, setShowDrop] = useState(false)
-    const [selectedProject, setSelectedProject] = useState('Default')
+    const [selectedProject, setSelectedProject] = useState('None')
 
     const showDropdown = () => {
         setShowDrop(true)
@@ -22,7 +22,7 @@ const TaskProjectButton = (props) => {
 
     return (
         <div className="relative" onMouseOver={showDropdown} onMouseLeave={hideDropdown}>
-            <button className={`inline-flex py-4 px-4 mb-3 w-full items-center w-12 h-12 mr-2  transition-colors duration-150 rounded-md border border-red focus:outline-none hover:border-pink-800 ${(selectedProject==='Default') && "text-gray-400"}`}>
+            <button className={`inline-flex py-4 px-4 mb-3 w-full items-center w-12 h-12 mr-2  transition-colors duration-150 rounded-md border border-red focus:outline-none hover:border-pink-800 ${(selectedProject==='None') && "text-gray-400"}`}>
                 {
                     selectedProject
                 }
@@ -35,7 +35,7 @@ const TaskProjectButton = (props) => {
                         ? props.projects.map( project => (
                             <div key={project.id} className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={() => setProjectHandler(project)}>{project.name}</div>
                         ))
-                        : <div className="px-3 py-1 hover:text-gray-800 focus:bg-indigo-700 hover:text-indigo-700" onClick={hideDropdown}>No Project</div>
+                        : <div className="px-3 py-1 cursor-pointer text-gray-400">No Project</div>
                     }
                 </div>
             }

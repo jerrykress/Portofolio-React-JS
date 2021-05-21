@@ -40,7 +40,8 @@ const AddProjectForm = (props) => {
                 "value": parseInt(value),
                 "tasks": []
             })
-        ).then(response => response).catch(error => console.log(error.response.data))
+        ).then(response => console.log(response)).catch(error => console.log(error.response.data))
+
     }
     
     const handleTitleInput = (s) => {
@@ -94,12 +95,3 @@ const AddProjectForm = (props) => {
 }
 
 export default AddProjectForm
-
-// id: 4,
-// abbr: 'ECS',
-// name: 'Cyber Security',
-// color: 'red',
-// startTime: [2017, 1, 2, 3, 0],
-// endTime: [2017, 1, 2, 3, 0],
-// participants: [1,2],
-// value: 10

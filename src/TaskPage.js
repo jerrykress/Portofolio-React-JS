@@ -12,7 +12,7 @@ import CompletedView from './components/CompletedTasksView'
 import TaskModal from './components/task_components/TaskModal'
 import DeleteModal from './components/task_components/DeleteConfirmModal'
 
-function TaskPage({tasks, setTasks, projects, setProjects}) {
+function TaskPage({tasks, setTasks, projects, setProjects, refreshInfo}) {
     const [modalPresented, setModalPresented] = useState(false)
     const [deleteModalPresented, setDeleteModalPresented] = useState(false)
 
@@ -61,7 +61,7 @@ function TaskPage({tasks, setTasks, projects, setProjects}) {
         }
   
         <header className={`${modalPresented && "pointer-events-none"}`}>
-          <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>
+          <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} refreshInfo={refreshInfo}/>
           <TodayView tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} />
           <TaskList tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} /> 
           <CompletedView tasks={tasks} setTasks={setTasks} invokeModal={invokeModal} />

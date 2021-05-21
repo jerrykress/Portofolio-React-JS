@@ -37,6 +37,11 @@ const AddTaskForm = (props) => {
             alert("Weight must be between 0 and 1.")
             return
         }
+        // if no project is selected
+        if(project===1){
+            alert("No project selected. Choose a project or create a project to begin.")
+            return
+        }
         const p = props.projects.filter(x => x.id===project)[0]
         await DataStore.save(
             new Task({
@@ -55,6 +60,8 @@ const AddTaskForm = (props) => {
         // clear form
         setText('')
         setDayDisplay('')
+        //refresh
+        props.refreshInfo()
     }
 
     return (
