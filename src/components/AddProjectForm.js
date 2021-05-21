@@ -41,7 +41,9 @@ const AddProjectForm = (props) => {
                 "tasks": []
             })
         ).then(response => console.log(response)).catch(error => console.log(error.response.data))
-
+        
+        // refresh after adding
+        props.refreshInfo()
     }
     
     const handleTitleInput = (s) => {

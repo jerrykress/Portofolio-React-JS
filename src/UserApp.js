@@ -47,7 +47,7 @@ function UserApp() {
         <Nav />
         <Switch>
           <Route path="/app/tasks" render={(props) => (<TaskPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} refreshInfo={fetchInfo}/>)} />
-          <Route path="/app/projects" render={(props) => (<ProjectPage {...props} accountId={accountID} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} forceRefreshTasks={refreshGlobalTasks}/>)} />
+          <Route path="/app/projects" render={(props) => (<ProjectPage {...props} accountId={accountID} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} forceRefreshTasks={refreshGlobalTasks} refreshInfo={fetchInfo}/>)} />
           <Route path="/app/calendar" render={(props) => (<CalendarPage {...props} tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects}/>)}/>
         </Switch>
       </Router>
