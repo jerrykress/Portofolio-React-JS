@@ -5,12 +5,15 @@ a list of all the tasks that are currently active (not completed)
 */ 
 
 import { useState } from 'react'
+import { DataStore } from '@aws-amplify/datastore';
 
 import TaskItem from './TaskItem'
 import SortDropDown from './task_components/SortTaskButton'
 import FilterButton from './FilterTaskButton'
 
-const Task = (props) => {
+import { Task } from './../models';
+
+const TaskList = (props) => {
     const [filterState, setFilterState] = useState(false)
     const [filteredProject, setFilteredProject] = useState(0)
 
@@ -24,9 +27,24 @@ const Task = (props) => {
         props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, reminder: !task.reminder} : task))
     }
 
-    const toggleCompleted = (id) => {
+    async function toggleCompleted(id) {
         console.log('toggle complete', id)
         props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, completed: !task.completed} : task))
+        // save to datastore
+        const temp = props.tasks.filter(task => task.id === id)
+        if(temp.length === 0){
+            console.log("Unknown Error 1, target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        /* Models in DataStore are immutable. To update a record you must use the copyOf function
+        to apply updates to the item’s fields rather than mutating the instance directly */
+        await DataStore.save(Task.copyOf(targetObject, item => {
+            // Update the values on {item} variable to update DataStore entry
+            item.completed = true
+        }))
+        // refresh
+        props.refreshInfo()
     }
 
     const filterApplicationHandler = (p) => {
@@ -54,4 +72,4 @@ const Task = (props) => {
     )
 }
 
-export default Task
+export default TaskList
