@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import { DataStore } from '@aws-amplify/datastore'
+
+import { Task } from './models';
 
 import './index.css';
 import './App.css';
@@ -42,6 +45,14 @@ function TaskPage({tasks, setTasks, projects, setProjects, refreshInfo}) {
     const deleteTask = (id) => {
         console.log('delete', id)
         setTasks(tasks.filter((task) => task.id !== id))
+        // Delete in DataStore
+        const temp = tasks.filter(task => task.id === id)
+        if(temp.length === 0){
+            console.log("Error locating task to be deleted, datastore task target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        DataStore.delete(targetObject)
         setDeleteModalPresented(false)
     }
 

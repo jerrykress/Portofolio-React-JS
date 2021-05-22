@@ -8,6 +8,14 @@ const CompletedTasksView = (props) => {
     const deleteTask = (id) => {
         console.log('delete', id)
         props.setTasks(props.tasks.filter((task) => task.id !== id))
+        // Delete in DataStore
+        const temp = props.tasks.filter(task => task.id === id)
+        if(temp.length === 0){
+            console.log("Error locating task to be deleted, datastore task target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        DataStore.delete(targetObject)
     }
 
     async function toggleCompleted(id) {
