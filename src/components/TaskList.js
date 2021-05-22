@@ -22,9 +22,24 @@ const TaskList = (props) => {
         props.setTasks(props.tasks.filter((task) => task.id !== id))
     }
 
-    const toggleTask = (id) => {
+    async function toggleTask(id) {
         console.log('toggle', id)
         props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, reminder: !task.reminder} : task))
+        // save to datastore
+        const temp = props.tasks.filter(task => task.id === id)
+        if(temp.length === 0){
+            console.log("Unknown Error 1, datastore task target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        /* Models in DataStore are immutable. To update a record you must use the copyOf function
+        to apply updates to the item’s fields rather than mutating the instance directly */
+        await DataStore.save(Task.copyOf(targetObject, item => {
+            // Update the values on {item} variable to update DataStore entry
+            item.reminder = !item.reminder
+        }))
+        // refresh
+        props.refreshInfo()
     }
 
     async function toggleCompleted(id) {
@@ -33,7 +48,7 @@ const TaskList = (props) => {
         // save to datastore
         const temp = props.tasks.filter(task => task.id === id)
         if(temp.length === 0){
-            console.log("Unknown Error 1, target not found.")
+            console.log("Unknown Error 2, datastore task target not found.")
             return
         }
         const targetObject = temp[0]
