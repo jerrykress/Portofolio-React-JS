@@ -64,7 +64,7 @@ function TaskPage({tasks, setTasks, projects, setProjects, refreshInfo}) {
           <AddTaskForm globalTasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} refreshInfo={refreshInfo}/>
           <TodayView tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} />
           <TaskList tasks={tasks} projects={projects} setTasks={setTasks} invokeModal={invokeModal} refreshInfo={refreshInfo}/> 
-          <CompletedView tasks={tasks} setTasks={setTasks} invokeModal={invokeModal} />
+          <CompletedView tasks={tasks} setTasks={setTasks} invokeModal={invokeModal} refreshInfo={refreshInfo}/>
         </header>
       </div>
     )
