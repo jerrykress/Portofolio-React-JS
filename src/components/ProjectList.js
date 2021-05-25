@@ -3,6 +3,7 @@ import React from 'react'
 import ProjectItem from './project_components/ProjectItem'
 
 const ProjectList = (props) => {
+
     return (
         <div className="mx-10">
             

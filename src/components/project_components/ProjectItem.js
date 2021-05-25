@@ -8,6 +8,8 @@ import MoreInfoButton from './ProjectMoreInfoBtn'
 const ProjectItem = (props) => {
     const [hovered, setHovered] = useState(false)
 
+    const projectTasks = props.tasks.filter(task => task.project.id===props.item.id)
+
     return (
         <div className={`flex flex-wrap relative content-between h-auto m-4 mb-6 bg-white border-2 border-gray-300 hover:border-gray-500 transition-colors duration-1000 p-6 rounded-md tracking-wide shadow-lg`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onDoubleClick={() => props.invokeModal(props.item, 1)}>
             <div className="w-full">
@@ -29,8 +31,8 @@ const ProjectItem = (props) => {
                     }
                 </h3>
 
-                {props.item.tasks.items.length!==0
-                    ? props.item.tasks.items.map(task => (
+                {projectTasks.length!==0
+                    ? projectTasks.map(task => (
                       <div key={task.id} className="">
                         <ProjectTaskItem item={task} parentProject={props.item} showCompleteBtn={true} forceRefreshTasks={props.forceRefreshTasks}/>
                       </div> ))
