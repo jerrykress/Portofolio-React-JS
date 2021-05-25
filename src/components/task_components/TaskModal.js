@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import moment from 'moment'
 
+import { DataStore } from '@aws-amplify/datastore';
+import { Task } from './../../models';
+
 import RenameButton from './ModalRenameButton'
 import ParseField from './../DateParseInputField'
 
@@ -17,15 +20,31 @@ const DialogModal = (props) => {
     const [momentArr, setMomentArr] = useState(moment(props.modalTask.time))
 
     const closeSelf = () => {
-        console.log("Close task modal and save changes")
+        console.log("Close task modal and discard changes")
         props.setModalPresented(false)
     }
 
-    const saveChanges = () => {
-        console.log("Close task modal and discard changes")
-        props.modalTask.text = renamedTitle
-        props.modalTask.weight = parseFloat(newWeight)
-        props.modalTask.notes = newNotes
+    async function saveChanges() {
+        console.log("Close task modal and save changes")
+        // props.setTasks(props.tasks.map((task)=>task.id === props.modalTask.id ? {...task, text: renamedTitle, weight: parseFloat(newWeight), notes: newNotes} : task))
+        // save to datastore
+        const temp = props.tasks.filter(task => task.id === props.modalTask.id)
+        console.log(temp)
+        if(temp.length === 0){
+            console.log("Unknown Error 1, datastore task target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        /* Models in DataStore are immutable. To update a record you must use the copyOf function
+        to apply updates to the item’s fields rather than mutating the instance directly */
+        await DataStore.save(Task.copyOf(targetObject, item => {
+            // Update the values on {item} variable to update DataStore entry
+            item.title = renamedTitle
+            item.weight = parseFloat(newWeight)
+            item.text = newNotes
+        }))
+        // refresh
+        props.refreshInfo()
         props.setModalPresented(false)
     }
     

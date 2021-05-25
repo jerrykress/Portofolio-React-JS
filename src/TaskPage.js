@@ -61,7 +61,7 @@ function TaskPage({tasks, setTasks, projects, setProjects, refreshInfo}) {
 
         {modalPresented &&
           <div>
-            <TaskModal setModalPresented={setModalPresented} modalTask={modalTask} projects={projects}/>
+            <TaskModal setModalPresented={setModalPresented} modalTask={modalTask} tasks={tasks} setTasks={setTasks} projects={projects} refreshInfo={refreshInfo}/>
           </div>
         }
 
