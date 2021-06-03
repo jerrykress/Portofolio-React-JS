@@ -1,5 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import { DataStore } from '@aws-amplify/datastore';
+
+import { Task } from './../../models';
+
 
 const ProjectTaskItem = (props) => {
     const levelColors = ["green", "yellow", "red"]
@@ -10,8 +14,7 @@ const ProjectTaskItem = (props) => {
     }
 
     const completeTask = (t) => {
-        props.item.completed = true
-        props.forceRefreshTasks()
+        props.completeTask(t.id)
     }
 
     return (

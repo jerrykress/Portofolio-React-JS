@@ -75,7 +75,7 @@ function ProjectPage({accountId, tasks, setTasks, projects, setProjects, forceRe
           </div>
         </div>
         
-        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks}/>
+        <ProjectList tasks={tasks} setTasks={setTasks} projects={projects} setProjects={setProjects} featuredAttr={featuredAttr} setFeaturedAttr={setFeaturedAttr} invokeModal={invokeModal} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks} refreshInfo={refreshInfo}/>
         
       </div>
     )

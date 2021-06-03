@@ -1,8 +1,29 @@
 import React from 'react'
+import { DataStore } from '@aws-amplify/datastore';
+import { Task } from './../models';
 
 import ProjectItem from './project_components/ProjectItem'
 
 const ProjectList = (props) => {
+    async function completeTask(id) {
+        console.log('toggle complete', id)
+        props.setTasks(props.tasks.map((task)=>task.id === id ? {...task, completed: !task.completed} : task))
+        // save to datastore
+        const temp = props.tasks.filter(task => task.id === id)
+        if(temp.length === 0){
+            console.log("Unknown Error 2, datastore task target not found.")
+            return
+        }
+        const targetObject = temp[0]
+        /* Models in DataStore are immutable. To update a record you must use the copyOf function
+        to apply updates to the item’s fields rather than mutating the instance directly */
+        await DataStore.save(Task.copyOf(targetObject, item => {
+            // Update the values on {item} variable to update DataStore entry
+            item.completed = true
+        }))
+        // refresh
+        props.refreshInfo()
+    }
 
     return (
         <div className="mx-10">
@@ -10,7 +31,7 @@ const ProjectList = (props) => {
             { props.projects.length !== 0 
                 ?
                 props.projects.map(project => (
-                <ProjectItem key={project.id} item={project} tasks={props.tasks} featuredAttr={props.featuredAttr} setFeaturedAttr={props.setFeaturedAttr} invokeModal={props.invokeModal} forceRefreshTasks={props.forceRefreshTasks}/>))
+                <ProjectItem key={project.id} item={project} tasks={props.tasks} featuredAttr={props.featuredAttr} setFeaturedAttr={props.setFeaturedAttr} invokeModal={props.invokeModal} completeTask={completeTask} forceRefreshTasks={props.forceRefreshTasks}/>))
                 :
                 <EmptyProjectListGraph />
             }

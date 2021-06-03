@@ -34,7 +34,7 @@ const ProjectItem = (props) => {
                 {projectTasks.length!==0
                     ? projectTasks.map(task => (
                       <div key={task.id} className="">
-                        <ProjectTaskItem item={task} parentProject={props.item} showCompleteBtn={true} forceRefreshTasks={props.forceRefreshTasks}/>
+                        <ProjectTaskItem item={task} parentProject={props.item} showCompleteBtn={true} forceRefreshTasks={props.forceRefreshTasks} completeTask={props.completeTask}/>
                       </div> ))
                     : <div className="text-gray-400">This project has no task</div>
                 }
