@@ -12,6 +12,8 @@ const ProjectDetailModal = (props) => {
     const [isRenameActive, setIsRenameActive] = useState(false)
     const [renamedTitle, setRenamedTitle] = useState(props.modalProject.name)
 
+    const projectTasks = props.tasks.filter(task => task.project.id===props.modalProject.id)
+
     const closeSelf = () => {
         console.log("Close task modal and discard changes")
         props.setModalPresented(false)
@@ -56,7 +58,7 @@ const ProjectDetailModal = (props) => {
                     
                     <div className="mt-3">
                         <ProgressBar 
-                            completedPercent={Math.round(props.modalProject.tasks.items.filter(x => !x.completed).map(x => x.weight).reduce((a, b) => a + b, 0) * (-100) + 100)} 
+                            completedPercent={Math.round(projectTasks.filter(x => !x.completed).map(x => x.weight).reduce((a, b) => a + b, 0) * (-100) + 100)} 
                             pendingPercent={moment().isAfter(moment(props.modalProject.endTime))
                                             ? 100
                                             : moment().isBefore(moment(props.modalProject.startTime))
@@ -68,7 +70,7 @@ const ProjectDetailModal = (props) => {
                     </div>
 
                     <div className="mt-5 -mx-1">
-                        {props.modalProject.tasks.items.map(task => 
+                        {projectTasks.map(task => 
                             <TaskItem key={task.id} item={task} parentProject={props.modalProject} showValue={false} showWeight={false} showDisownBtn={true} forceRefreshTasks={props.forceRefreshTasks} invokeModal={props.invokeModal}/>
                         )}
                     </div>

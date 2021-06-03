@@ -60,7 +60,7 @@ function ProjectPage({accountId, tasks, setTasks, projects, setProjects, forceRe
 
         {detailModalPresented &&
           <div>
-            <ProjectDetailModal tasks={tasks} setTasks={setTasks} modalProject={modalProject} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks} invokeModal={invokeModal}/>
+            <ProjectDetailModal tasks={tasks} projects={projects} setTasks={setTasks} modalProject={modalProject} setModalPresented={setDetailModalPresented} forceRefreshTasks={forceRefreshTasks} invokeModal={invokeModal}/>
           </div>
         }
 
