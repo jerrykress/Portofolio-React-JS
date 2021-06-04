@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# React Task Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple project management and task tracking system built using React JS and styled with Tailwind CSS. All components have been made from scratch. All UI elements are responsive and interactive.
 
-## Available Scripts
+# Features
 
-In the project directory, you can run:
+This system contains three main components: Task Tracker, Project Tracker and Calendar.
 
-### `npm start`
+## Task Tracker
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In addition to being able to add titles and notes to each task:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Each task can be assigned a priority including low, mid and high.
+- Each task can be assigned a project and a weight associated with this project.
+- Each task can be highlighted to show on top of the page.
+- Tasks marked as completed will show at the bottom of page until completely deleted.
+- Double click on a task to view or change the details.
 
-### `npm test`
+Additional features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sorting tasks by alphabetical order, priority level and due time.
+- Filtering tasks by projects.
+- Recover a completed task back to todo status.
 
-### `npm run build`
+## Project Tracker
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create and manage projects with the following attributes:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Adding projects with title, start date and end date.
+- Assigning projects with value points.
+- Adding participants to the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Double click on a project to view and edit:
 
-### `npm run eject`
+- Project details.
+- Tasks assigned to this project.
+- Progress bar which indicates whether project is on time or behind schedule based on project end time and task completion percentage.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Additional features:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Sorting tasks with in projects by alphabetical order, priority level and due time.
+- Sorting projects by alphabetical order, end time and overall value.
+- Setting the overlay information on the project banner to project value, progress percentage or acronym.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Calendar
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A fully functional monthly calendar written from scratch, supported by Moment JS.
 
-## Learn More
+- Navigation includes: previous month, next month and back to today.
+- Calendar height is adjustable through a set of buttons of top when needed to display more task thumbnails.
+- Display all tasks below the calendar given a selected cell in the calendar.
+- Marking tasks as complete right from the calendar page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Date Handling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Date and time inside this project is stored internally by Moment JS. Parsing of the time is handled by a custom script which accepts some natural expressions such as:
 
-### Code Splitting
+- Today at 12.
+- Tomorrow at 14:30.
+- Aug 14 at 9:15.
+- 2077 March 6 at 12 45
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Running Locally
 
-### Analyzing the Bundle Size
+The version on the **main** branch uses react component states to store its values for UI demo purposes only. Data is not persistent and will reset after a refresh.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    > To use this version of the project, pull the repository and perform npm start.
 
-### Making a Progressive Web App
+# Deployed Version
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The code for the deployed version of this project is available on the **aws** branch supported by **Amplify** and **GraphQL**.
+Visit website here: [React Todo Online Demo](https://aws.d3t0l5fc0bu395.amplifyapp.com/)
+The deployed system includes some additional features such as:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- User registration and authentication.
+- Email verification and password reset.
+- Persistent data storage for all tasks and projects.

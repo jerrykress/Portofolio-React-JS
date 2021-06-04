@@ -17,6 +17,7 @@ function App() {
           <Route path="/app" render={(props) => (<UserApp {...props} />)} />
         </Switch>
       </Router>
+      <AmplifySignIn headerText="Sign In to React Todo" slot="sign-in" usernameAlias="email" />
     </AmplifyAuthenticator>
   );
 }

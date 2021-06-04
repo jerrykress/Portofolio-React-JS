@@ -16,3 +16,10 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --amplify-primary-color: #6947ff;
+  --amplify-primary-tint: #ff7359;
+  --amplify-primary-shade: #e0573e;
+  --amplify-font-family: Helvetica;
+}
