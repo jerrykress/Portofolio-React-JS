@@ -1,6 +1,6 @@
 # React Task Tracker
 
-A simple project management and task tracking system built using React JS and styled with Tailwind CSS. All components have been made from scratch. All UI elements are responsive and interactive.
+A simple project management and task tracking system built using React JS and styled with Tailwind CSS. All components have been made from scratch. All UI elements are responsive and interactive. See more screenshots of the deployed app [on this page](https://github.com/jerrykress/ReactJS-Project-Tracker/tree/main/screenshots). Or checkout the online demo [here](https://aws.d3t0l5fc0bu395.amplifyapp.com/)!
 
 # Features
 
