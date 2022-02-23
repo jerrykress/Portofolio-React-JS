@@ -8,6 +8,8 @@ This system contains three main components: Task Tracker, Project Tracker and Ca
 
 ## Task Tracker
 
+![alt text](https://github.com/jerrykress/ReactJS-Project-Tracker/blob/main/screenshots/task-page.png?raw=true)
+
 In addition to being able to add titles and notes to each task:
 
 - Each task can be assigned a priority including low, mid and high.
@@ -23,6 +25,8 @@ Additional features:
 - Recover a completed task back to todo status.
 
 ## Project Tracker
+
+![alt text](https://github.com/jerrykress/ReactJS-Project-Tracker/blob/main/screenshots/project-page-date.png?raw=true)
 
 Create and manage projects with the following attributes:
 
@@ -43,6 +47,8 @@ Additional features:
 - Setting the overlay information on the project banner to project value, progress percentage or acronym.
 
 ## Calendar
+
+![alt text](https://github.com/jerrykress/ReactJS-Project-Tracker/blob/main/screenshots/calendar-page.png?raw=true)
 
 A fully functional monthly calendar written from scratch, supported by Moment JS.
 
